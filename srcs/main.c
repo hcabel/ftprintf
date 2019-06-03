@@ -6,13 +6,11 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/03 14:26:40 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/03 14:31:16 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
 
 int		main(void)
 {

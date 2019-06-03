@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/06/03 14:28:27 by hcabel           ###   ########.fr        #
+#    Updated: 2019/06/03 14:31:09 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SOURCES_REP		=	srcs
 
 INCLUDES_FILE	=	ft_printf.h
 
-SOURCES			=	main.c
+SOURCES			=	main.c			\
+					ft_printf.c
 
 INCLUDES		=	-I $(INCLUDE_REP)/ -I libft/$(INCLUDE_REP)
 
