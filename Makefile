@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/06/03 13:44:57 by hcabel           ###   ########.fr        #
+#    Updated: 2019/06/03 14:28:27 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,19 +35,17 @@ ifeq (, $(wildcard libft/libft.a))
 	CHECK		=	make -C libft
 endif
 
-NAME			=	fdf
+NAME			=	libftprintf
 
 OBJECT_REP		=	objects
 INCLUDE_REP		=	includes
 SOURCES_REP		=	srcs
 
-INCLUDES_FILE	=	fdf.h
+INCLUDES_FILE	=	ft_printf.h
 
 SOURCES			=	main.c
 
 INCLUDES		=	-I $(INCLUDE_REP)/ -I libft/$(INCLUDE_REP)
-LIB				=	-L /usr/local/lib/
-FRAMEWORK		=	-framework OpenGL -framework Appkit
 
 OBJECTS			=	$(addprefix $(OBJECT_REP)/, $(SOURCES:.c=.o))
 
@@ -58,14 +56,16 @@ OBJECTS			=	$(addprefix $(OBJECT_REP)/, $(SOURCES:.c=.o))
 all: update $(NAME)
 	$(MSG)
 
-$(NAME): mkdir make $(OBJECTS) 
-	gcc $(FLAGS) -o $(NAME) $(OBJECTS) $(LIB) -lmlx $(FRAMEWORK) libft/libft.a
+$(NAME): mkdir make $(OBJECTS)
+	echo "\n\033[0;36mCreate [$@]\n\033[0;35m"
+	gcc $(FLAGS) -o $(NAME) $(OBJECTS) libft/ -lft
 	
 mkdir:
 	mkdir -p $(OBJECT_REP)
 
 $(OBJECT_REP)/%.o: $(SOURCES_REP)/%.c $(INCLUDE_REP)/$(INCLUDES_FILE) Makefile
-	gcc $(FLAGS) -o $@ $(INCLUDES) -c $<
+	echo "\r\033[0;35mCreate \033[0;32m[\033[0;33m$@\033[0;32m]				\c"
+	gcc $(FLAGS) -o $(OBJECT_REP)/%.o $(INCLUDES) -c $<
 
 clean:
 	rm -rf $(OBJECT_REP)
