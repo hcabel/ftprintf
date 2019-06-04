@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/06/03 14:31:09 by hcabel           ###   ########.fr        #
+#    Updated: 2019/06/03 15:44:58 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ ifeq (, $(wildcard libft/libft.a))
 	CHECK		=	make -C libft
 endif
 
-NAME			=	libftprintf
+NAME			=	printf
 
 OBJECT_REP		=	objects
 INCLUDE_REP		=	includes
@@ -44,7 +44,8 @@ SOURCES_REP		=	srcs
 INCLUDES_FILE	=	ft_printf.h
 
 SOURCES			=	main.c			\
-					ft_printf.c
+					ft_printf.c		\
+					set_variable.c
 
 INCLUDES		=	-I $(INCLUDE_REP)/ -I libft/$(INCLUDE_REP)
 
@@ -59,14 +60,14 @@ all: update $(NAME)
 
 $(NAME): mkdir make $(OBJECTS)
 	echo "\n\033[0;36mCreate [$@]\n\033[0;35m"
-	gcc $(FLAGS) -o $(NAME) $(OBJECTS) libft/ -lft
+	gcc $(FLAGS) -o $(NAME) $(OBJECTS) -L libft/ -lft
 	
 mkdir:
 	mkdir -p $(OBJECT_REP)
 
 $(OBJECT_REP)/%.o: $(SOURCES_REP)/%.c $(INCLUDE_REP)/$(INCLUDES_FILE) Makefile
 	echo "\r\033[0;35mCreate \033[0;32m[\033[0;33m$@\033[0;32m]				\c"
-	gcc $(FLAGS) -o $(OBJECT_REP)/%.o $(INCLUDES) -c $<
+	gcc $(FLAGS) -o $@ $(INCLUDES) -c $<
 
 clean:
 	rm -rf $(OBJECT_REP)
