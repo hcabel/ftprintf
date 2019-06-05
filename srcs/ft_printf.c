@@ -6,13 +6,13 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:00:17 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/05 10:49:08 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/05 11:21:05 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		finish(char *reason)
+void			finish(char *reason)
 {
 	ft_putstr("{ ft_printf error : ");
 	ft_putstr(reason);
@@ -39,19 +39,16 @@ static void		display(t_constchar *lst_constchar, t_variable *lst_valeur
 	printf("\n");
 	while (lst_flags)
 	{
-		if (lst_flags)
-		{
-			printf("option		: %s\n", lst_flags->options);
-			printf("Lenght_min	: %d\n", lst_flags->lenght_min);
-			printf("preci		: %d\n", lst_flags->precis);
-			printf("scale		: %s\n", lst_flags->scale);
-			printf("type		: %c\n\n", lst_flags->type);
-			lst_flags = lst_flags->next;
-		}
+		printf("option		: %s\n", lst_flags->options);
+		printf("Lenght_min	: %d\n", lst_flags->lenght_min);
+		printf("preci		: %d\n", lst_flags->precis);
+		printf("scale		: %s\n", lst_flags->scale);
+		printf("type		: %c\n\n", lst_flags->type);
+		lst_flags = lst_flags->next;
 	}
 }
 
-int			ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	t_variable	*lst_valeur;
 	t_constchar	*lst_constchar;

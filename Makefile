@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/06/04 14:53:03 by hcabel           ###   ########.fr        #
+#    Updated: 2019/06/05 11:39:59 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ OBJECTS			=	$(addprefix $(OBJECT_REP)/, $(SOURCES:.c=.o))
 
 .PHONY: all clean fclean re mkdir make
 .SILENT: all clean fclean re $(OBJECT_FILE) $(NAME) $(OBJECTS) mkdir make \
-			remake update remove
+			remake update remove norm
 
 all: update $(NAME)
 	$(MSG)

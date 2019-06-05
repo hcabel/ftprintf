@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:00:54 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/05 10:48:42 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/05 11:27:15 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ t_variable				*stock_variable(int args_nb, va_list args);
 /*
 **	stock_flags.c
 */
-int					new_arg(t_flags **lst_flags, const char *str, int i);
+int						new_arg(t_flags **lst_flags, const char *str, int i);
 
 #endif
