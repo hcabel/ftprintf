@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:48:12 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/05 09:41:42 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/05 10:25:55 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static t_flags	*init_lst(void)
 
 	if (!(new = (t_flags*)malloc(sizeof(t_flags))))
 		return (NULL);
-	new->options = "\0";
+	new->options = ft_strnew(0);
 	new->lenght_min = 0;
-	new->precis = "\0";
+	new->precis = ft_strnew(0);
 	new->scale = 0;
 	new->type = '\0';
 	new->next = NULL;
@@ -39,20 +39,24 @@ static t_flags	*init_lst(void)
 }
 
 int				new_arg(t_flags **lst_flags, const char *str, int i)
-{/*
+{
 	t_flags *flags_ptr;
 	int	i2;
 
-	flags_ptr = *lst_flags;
+	if (str[i] != '%')
+		return (0);
 	if (*lst_flags == NULL)
 		*lst_flags = init_lst();
 	else
 		add_last(lst_flags, init_lst());
+	flags_ptr = *lst_flags;
+	while (flags_ptr->next)
+		flags_ptr = flags_ptr->next;
 	i2 = 1;
 	i++;
 	while (str[i] == '-' || str[i] == '+' || str[i] == '#' || str[i] == '0' || str[i] == ' ')
 	{
-		flags_ptr->options[i2] = str[i];
+		flags_ptr->options[i2 - 1] = str[i];
 		i++;
 		i2++;
 	}
@@ -77,5 +81,5 @@ int				new_arg(t_flags **lst_flags, const char *str, int i)
 		}
 	}
 	flags_ptr->type = str[i];
-	return (i2);*/
+	return (i2 + 1);
 }

@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:00:17 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/04 16:59:49 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/05 10:11:49 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,30 @@ void		finish(char *reason)
 static void		display(t_constchar *lst_constchar, t_variable *lst_valeur
 					, t_flags *lst_flags)
 {
-	while (lst_constchar || lst_valeur || lst_flags)
+	while (lst_constchar || lst_valeur)
 	{
-		ft_putstr((char*)lst_constchar->content);
-		lst_constchar = lst_constchar->next;
+		if (lst_constchar)
+		{
+			ft_putstr((char*)lst_constchar->content);
+			lst_constchar = lst_constchar->next;
+		}
 		if (lst_valeur != NULL)
 		{
 			ft_putnbr((int)lst_valeur->content);
 			lst_valeur = lst_valeur->next;
+		}
+	}
+	printf("\n");
+	while (lst_flags)
+	{
+		if (lst_flags)
+		{
+			printf("option		: %s\n", lst_flags->options);
+			printf("Lenght_min	: %d\n", lst_flags->lenght_min);
+			printf("preci		: %s\n", lst_flags->precis);
+			printf("scale		: %d\n", lst_flags->scale);
+			printf("type		: %c\n\n", lst_flags->type);
+			lst_flags = lst_flags->next;
 		}
 	}
 }
