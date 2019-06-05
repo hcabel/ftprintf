@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:48:12 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/05 10:25:55 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/05 10:48:30 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static t_flags	*init_lst(void)
 		return (NULL);
 	new->options = ft_strnew(0);
 	new->lenght_min = 0;
-	new->precis = ft_strnew(0);
-	new->scale = 0;
+	new->precis = 0;
+	new->scale = ft_strnew(0);
 	new->type = '\0';
 	new->next = NULL;
 	return (new);
@@ -73,11 +73,31 @@ int				new_arg(t_flags **lst_flags, const char *str, int i)
 	{
 		i++;
 		i2++;
-		flags_ptr->scale = ft_atoi(str + i);
+		flags_ptr->precis = ft_atoi(str + i);
 		while (ft_isdigit(str[i]))
 		{
 			i++;
 			i2++;
+		}
+	}
+	if (str[i] == 'h')
+	{
+		i++;
+		flags_ptr->scale[0] = 'h';
+		if (str[i] == 'h')
+		{
+			flags_ptr->scale[1] = 'h';
+			i++;
+		}
+	}
+	else if (str[i] == 'l')
+	{
+		i++;
+		flags_ptr->scale[0] = 'l';
+		if (str[i] == 'l')
+		{
+			flags_ptr->scale[1] = 'l';
+			i++;
 		}
 	}
 	flags_ptr->type = str[i];

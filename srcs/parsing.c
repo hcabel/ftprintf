@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 13:07:23 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/05 10:24:59 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/05 10:56:44 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,18 @@ static int			dispatch_format(const char *format, t_flags **lst_flags
 		i2 = 0;
 		while (format[i + i2] != '%' && format[i + i2] != '\0')
 			i2++;
-		nb_args++;
-		if (*lst_constchar == NULL)
-			*lst_constchar = init_lst(ft_strndup(format + i, i2 - i));
-		else
-			add_last(lst_constchar, init_lst(ft_strndup(format + i, i2)));
-		i += i2 + new_arg(lst_flags, format, i + i2);
+		if (format[i + i2] == '\0')
+		{
+			nb_args++;
+			if (*lst_constchar == NULL)
+				*lst_constchar = init_lst(ft_strndup(format + i, i2 - i));
+			else
+				add_last(lst_constchar, init_lst(ft_strndup(format + i, i2)));
+			i += i2 + new_arg(lst_flags, format, i + i2);
+		}
+		i += i2;
 	}
-	return (nb_args - 1);
+	return (nb_args);
 }
 
 t_variable			*parsing(const char *format, t_flags **lst_flags

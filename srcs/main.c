@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/05 10:38:27 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/05 10:49:40 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		main(void)
 {
-	ft_printf("ft_printf |%-++--c| |%10.8s| |%+-10d| |%++++++++++lld|\n", -5, 0);
+	ft_printf("ft_printf |%-++--lc| |%10.8hhs| |%+-10hd| |%++++++++++lld|\n", -5, 0);
 	/*
 	int		*tab = malloc(sizeof(int) * 10);
 	int		*tab2 = malloc(0);

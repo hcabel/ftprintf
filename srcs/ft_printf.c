@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:00:17 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/05 10:11:49 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/05 10:49:08 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static void		display(t_constchar *lst_constchar, t_variable *lst_valeur
 		{
 			printf("option		: %s\n", lst_flags->options);
 			printf("Lenght_min	: %d\n", lst_flags->lenght_min);
-			printf("preci		: %s\n", lst_flags->precis);
-			printf("scale		: %d\n", lst_flags->scale);
+			printf("preci		: %d\n", lst_flags->precis);
+			printf("scale		: %s\n", lst_flags->scale);
 			printf("type		: %c\n\n", lst_flags->type);
 			lst_flags = lst_flags->next;
 		}

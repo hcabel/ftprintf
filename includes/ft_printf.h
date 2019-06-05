@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:00:54 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/05 09:54:33 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/05 10:48:42 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct			s_flags
 {
 	char				*options;
 	int					lenght_min;
-	char				*precis;
-	int					scale;
+	int					precis;
+	char				*scale;
 	char				type;
 	struct s_flags		*next;
 }						t_flags;
