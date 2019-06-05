@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:00:17 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/05 11:21:05 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/05 14:12:57 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +20,6 @@ void			finish(char *reason)
 	exit(0);
 }
 
-static void		display(t_constchar *lst_constchar, t_variable *lst_valeur
-					, t_flags *lst_flags)
-{
-	while (lst_constchar || lst_valeur)
-	{
-		if (lst_constchar)
-		{
-			ft_putstr((char*)lst_constchar->content);
-			lst_constchar = lst_constchar->next;
-		}
-		if (lst_valeur != NULL)
-		{
-			ft_putnbr((int)lst_valeur->content);
-			lst_valeur = lst_valeur->next;
-		}
-	}
-	printf("\n");
-	while (lst_flags)
-	{
-		printf("option		: %s\n", lst_flags->options);
-		printf("Lenght_min	: %d\n", lst_flags->lenght_min);
-		printf("preci		: %d\n", lst_flags->precis);
-		printf("scale		: %s\n", lst_flags->scale);
-		printf("type		: %c\n\n", lst_flags->type);
-		lst_flags = lst_flags->next;
-	}
-}
-
 int				ft_printf(const char *format, ...)
 {
 	t_variable	*lst_valeur;
@@ -57,7 +29,7 @@ int				ft_printf(const char *format, ...)
 
 	va_start(args, format);
 	lst_valeur = parsing(format, &lst_flags, &lst_constchar, args);
-	display(lst_constchar, lst_valeur, lst_flags);
 	va_end(args);
+	display(lst_flags, lst_valeur, lst_constchar);
 	return (0);
 }

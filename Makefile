@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/06/05 13:12:30 by hcabel           ###   ########.fr        #
+#    Updated: 2019/06/05 14:13:53 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ INCLUDE_REP		=	includes
 SOURCES_REP		=	srcs
 PARSING_REP		=	$(SOURCES_REP)/parsing
 FUNCTION_REP	=	$(SOURCES_REP)/conversions
+DISPLAY_REP		=	$(SOURCES_REP)/display
 
 INCLUDES_FILE	=	ft_printf.h
 
@@ -49,7 +50,10 @@ PARSING_SRCS	=	parsing.c			\
 					stock_variable.c	\
 					stock_flags.c
 					
-FUNCTION_SRCS	=	ft_itoa_base.c
+FUNCTION_SRCS	=
+
+DISPLAY_SRCS	=	display.c			\
+					cast.c
 
 OTHERS_SRCS		=	main.c				\
 					ft_printf.c			
@@ -58,7 +62,8 @@ INCLUDES		=	-I $(INCLUDE_REP)/ -I libft/$(INCLUDE_REP)
 
 OBJECTS			=	$(addprefix $(OBJECT_REP)/, $(PARSING_SRCS:.c=.o))	\
 					$(addprefix $(OBJECT_REP)/, $(FUNCTION_SRCS:.c=.o))	\
-					$(addprefix $(OBJECT_REP)/, $(OTHERS_SRCS:.c=.o))
+					$(addprefix $(OBJECT_REP)/, $(OTHERS_SRCS:.c=.o))	\
+					$(addprefix $(OBJECT_REP)/, $(DISPLAY_SRCS:.c=.o))	
 
 .PHONY: all clean fclean re mkdir make
 .SILENT: all clean fclean re $(OBJECT_FILE) $(NAME) $(OBJECTS) mkdir make \
@@ -83,6 +88,10 @@ $(OBJECT_REP)/%.o: $(PARSING_REP)/%.c $(INCLUDE_REP)/$(INCLUDES_FILE) Makefile
 	gcc $(FLAGS) -o $@ $(INCLUDES) -c $<
 
 $(OBJECT_REP)/%.o: $(FUNCTION_REP)/%.c $(INCLUDE_REP)/$(INCLUDES_FILE) Makefile
+	echo "\r\033[0;35mCreate \033[0;32m[\033[0;33m$@\033[0;32m]				\c"
+	gcc $(FLAGS) -o $@ $(INCLUDES) -c $<
+
+$(OBJECT_REP)/%.o: $(DISPLAY_REP)/%.c $(INCLUDE_REP)/$(INCLUDES_FILE) Makefile
 	echo "\r\033[0;35mCreate \033[0;32m[\033[0;33m$@\033[0;32m]				\c"
 	gcc $(FLAGS) -o $@ $(INCLUDES) -c $<
 
