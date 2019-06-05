@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/03 14:31:16 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/04 16:59:39 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int		main(void)
 {
+	ft_printf("48) Mon PRINTF  : |%d| |%d| |%d|\n", -5, 0, 5);
+	/*
 	int		*tab = malloc(sizeof(int) * 10);
 	int		*tab2 = malloc(0);
 
@@ -1693,5 +1695,6 @@ int		main(void)
 	ft_printf("19) Mon PRINTF  : |%llu|\n", (unsigned long long)ULLONG_MAX);
 	printf("20) Vrai PRINTF : |%llu| |%llu|\n", (unsigned long long)-1, (unsigned long long)ULLONG_MAX + 1);
 	ft_printf("20) Mon PRINTF  : |%llu| |%llu|\n", (unsigned long long)-1, (unsigned long long)ULLONG_MAX + 1);
+	*/
 	return (0);
 }

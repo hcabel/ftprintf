@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_variable.c                                     :+:      :+:    :+:   */
+/*   stock_variable.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:48:12 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/04 09:20:47 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/04 14:18:14 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void		add_last(t_variable **lst, t_variable *elem)
 	elem->next = NULL;
 }
 
-static t_variable	*init_list(char	*content)
+static t_variable	*init_lst(void	*content)
 {
 	t_variable	*new;
 
@@ -34,23 +34,20 @@ static t_variable	*init_list(char	*content)
 	return (new);
 }
 
-t_variable			*stock_variable(int nb_args, ...)
+t_variable			*stock_variable(int args_nb, va_list args)
 {
-	va_list		args;
 	t_variable	*list;
 	int			i;
 
-	va_start(args, nb_args);
 	list = NULL;
 	i = 0;
-	while (i < nb_args)
-	{
+	while (i < args_nb)
+	{	
 		if (list == NULL)
-			list = init_list(va_arg(args, char*));
+			list = init_lst(va_arg(args, void*));
 		else
-			add_last(&list, init_list(va_arg(args, char*)));
+			add_last(&list, init_lst(va_arg(args, void*)));
 		i++;
 	}
-	va_end(args);
 	return (list);
 }

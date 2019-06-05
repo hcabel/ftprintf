@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/06/03 15:44:58 by hcabel           ###   ########.fr        #
+#    Updated: 2019/06/04 14:53:03 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,9 +43,11 @@ SOURCES_REP		=	srcs
 
 INCLUDES_FILE	=	ft_printf.h
 
-SOURCES			=	main.c			\
-					ft_printf.c		\
-					set_variable.c
+SOURCES			=	main.c				\
+					ft_printf.c			\
+					parsing.c			\
+					stock_variable.c	\
+					stock_flags.c
 
 INCLUDES		=	-I $(INCLUDE_REP)/ -I libft/$(INCLUDE_REP)
 
