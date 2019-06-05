@@ -6,61 +6,53 @@
 /*   By: maolivie <maolivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 16:06:01 by maolivie          #+#    #+#             */
-/*   Updated: 2019/06/05 11:35:03 by maolivie         ###   ########.fr       */
+/*   Updated: 2019/06/05 16:04:35 by maolivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <printf.h>
 
-unsigned short	nbr_len(int value, int base)
+size_t		nbr_len(unsigned int value, int base)
 {
-	unsigned int	abs;
-	unsigned short	len;
+	size_t	len;
 
 	len = 1;
-	if (value < 0)
-	{
-		abs = -value;
-		if (base == 10)
-			++len;
-	}
-	else
-		abs = value;
-	while (abs >= (unsigned int)base)
+	if (base == 10 && (int)value < 0)
 	{
 		++len;
-		abs /= base;
+		value = -(int)value;
+	}
+	while (value >= (unsigned int)base)
+	{
+		++len;
+		value /= base;
 	}
 	return (len);
 }
 
-char			get_digit(short value)
+char	get_digit(unsigned int value)
 {
 	return (value > 9 ? 'A' + value - 10 : '0' + value);
 }
 
-char			*ft_itoa_base(int value, int base)
+char	*ft_itoa_base(unsigned int value, int base)
 {
-	char			*str;
-	unsigned int	abs;
-	unsigned short	len;
+	size_t	len;
+	char	*str;
 
 	len = nbr_len(value, base);
 	if ((str = ft_strnew(len)) == NULL)
 		return (NULL);
-	if (value < 0)
+	if (base == 10 && (int)value < 0)
 	{
-		abs = -value;
-		if (base == 10)
-			str[0] = '-';
+		str[0] = '-';
+		value = -(int)value;
 	}
-	else
-		abs = value;
-	while (abs >= (unsigned int)base)
+	while (value >= (unsigned int)base)
 	{
-		str[--len] = get_digit(abs % base);
-		abs /= base;
+		str[--len] = get_digit(value % base);
+		value /= base;
 	}
-	str[--len] = get_digit(abs);
+	str[--len] = get_digit(value);
 	return (str);
 }
