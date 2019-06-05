@@ -6,7 +6,7 @@
 /*   By: maolivie <maolivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 16:06:01 by maolivie          #+#    #+#             */
-/*   Updated: 2019/06/05 11:30:36 by maolivie         ###   ########.fr       */
+/*   Updated: 2019/06/05 11:35:03 by maolivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ unsigned short	nbr_len(int value, int base)
 	return (len);
 }
 
-char			get_sign(short value)
+char			get_digit(short value)
 {
 	return (value > 9 ? 'A' + value - 10 : '0' + value);
 }
@@ -58,9 +58,9 @@ char			*ft_itoa_base(int value, int base)
 		abs = value;
 	while (abs >= (unsigned int)base)
 	{
-		str[--len] = get_sign(abs % base);
+		str[--len] = get_digit(abs % base);
 		abs /= base;
 	}
-	str[--len] = get_sign(abs);
+	str[--len] = get_digit(abs);
 	return (str);
 }
