@@ -6,13 +6,13 @@
 /*   By: maolivie <maolivie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 16:06:01 by maolivie          #+#    #+#             */
-/*   Updated: 2019/06/05 16:04:35 by maolivie         ###   ########.fr       */
+/*   Updated: 2019/06/05 16:09:52 by maolivie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <printf.h>
 
-size_t		nbr_len(unsigned int value, int base)
+size_t	nbr_len(unsigned int value, int base)
 {
 	size_t	len;
 
