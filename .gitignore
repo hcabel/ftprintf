@@ -1,2 +1,4 @@
 libft
 *.o
+printf
+.vscode
