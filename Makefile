@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/06/06 14:20:17 by hcabel           ###   ########.fr        #
+#    Updated: 2019/06/06 14:26:31 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ PARSING_SRCS	=	parsing.c			\
 					stock_variable.c	\
 					stock_flags.c
 					
-FUNCTION_SRCS	=
+FUNCTION_SRCS	=	ft_itoa_base.c
 
 DISPLAY_SRCS	=	display.c			\
 
