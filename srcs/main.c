@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/06 15:47:01 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/06 15:52:01 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr("./printf [c, s, p, d/i, hd/hi, hhd/hhi, ld/li, lld,lli, o, ho, hho, lo, llo, x, hx, hhx, lx, llx, X, hX, hhX, lX, llX]\n");
+		ft_putstr("./printf [c, s, p, d/i, hd/hi, hhd/hhi, ld/li, lld,lli, o, ho, hho, lo, llo, x, hx, hhx, lx, llx, X, hX, hhX, lX, llu, u, hu, hhu, lX, llu]\n");
 		return(0);
 	}
 	str = argv[1];
