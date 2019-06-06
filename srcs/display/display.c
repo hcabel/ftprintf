@@ -6,11 +6,33 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 13:46:47 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/06 14:34:47 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/06 16:33:26 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	find(char *str, char chara)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == chara)
+			return (1);
+	}
+	return (0);
+}
+
+static void	fill(char chara, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i++ < size)
+		ft_putchar(chara);
+}
 
 void	display(t_flags *lst_flags, t_variable *lst_variable
 			, t_constchar *lst_constchar)
@@ -25,17 +47,27 @@ void	display(t_flags *lst_flags, t_variable *lst_variable
 		if (lst_variable && lst_flags)
 		{
 			if (lst_flags->type == 'c')
-				ft_putstr("{char}");
+				ft_putchar(lst_flags->type);
 			else if (lst_flags->type == 's')
-				ft_putstr("{string}");
-			else if (lst_flags->type == 'd')
-				ft_putstr("{number}");
+				ft_putchar(lst_flags->type);
+			else if (lst_flags->type == 'p')
+				ft_putchar(lst_flags->type);
+			else if (lst_flags->type == 'd' || lst_flags->type == 'i')
+				ft_putchar(lst_flags->type);
+			else if (lst_flags->type == 'o')
+				ft_putchar(lst_flags->type);
+			else if (lst_flags->type == 'x')
+				ft_putchar(lst_flags->type);
+			else if (lst_flags->type == 'X')
+				ft_putchar(lst_flags->type);
 			else if (lst_flags->type == 'u')
-				ft_putstr("{unsigned number}");
+				ft_putchar(lst_flags->type);
+			else
+				ft_putstr("{ERROR}");
 			lst_variable = lst_variable->next;
 			lst_flags = lst_flags->next;
 		}
-		else if (lst_flags && !lst_variable)
+		if (lst_flags && !lst_variable)
 			ft_putstr("{More variables please}");
 	}
 }

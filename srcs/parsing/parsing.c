@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 13:07:23 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/05 11:32:50 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/06 16:35:25 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ static int			dispatch_format(const char *format, t_flags **lst_flags
 	while (format[i])
 	{
 		i2 = 0;
-		while (format[i + i2] != '%' && format[i + i2] != '\0')
+		while ((format[i + i2] != '%' && format[i + i2] != '\0')
+			|| (format[i + i2] == '%' && format[i + i2 + 1] == '%')
+			|| (format[i + i2] == '%' && format[i + i2 - 1] == '%'))
 			i2++;
 		nb_args++;
 		if (*lst_constchar == NULL)
