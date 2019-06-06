@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/06/05 14:13:53 by hcabel           ###   ########.fr        #
+#    Updated: 2019/06/06 14:20:17 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,6 @@ PARSING_SRCS	=	parsing.c			\
 FUNCTION_SRCS	=
 
 DISPLAY_SRCS	=	display.c			\
-					cast.c
 
 OTHERS_SRCS		=	main.c				\
 					ft_printf.c			

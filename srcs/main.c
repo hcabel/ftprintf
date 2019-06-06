@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/05 16:15:40 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/06 14:20:10 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ int		main(void)
 	int		*tab = malloc(sizeof(int) * 10);
 	int		*tab2 = malloc(0);
 
-	printf("printf		|%d| |%d| |%u| |%u| |%hd| |%hhd| |%hd|\n",
-		INT_MAX, INT_MIN, UINT_MAX, 0, SHRT_MIN, 42, SHRT_MAX);
-	ft_printf("ft_printf	|%d| |%d| |%u| |%u| |%hd| |%hhd| |%hd|\n",
-		INT_MAX, INT_MIN, UINT_MAX, 0, SHRT_MIN, 42, SHRT_MAX);
+	printf("\nRESULT -->  printf		|%d| |%d|\n\n", INT_MAX, INT_MIN);
+	ft_printf("\nRESULT --> ft_printf	|%d| |%d|\n\n", INT_MAX, INT_MIN);
 	return(0);/*
 	ft_printf("--------------------%%c--------------------\n");
 	printf("01) Vrai PRINTF : |%c|\n", 'a');

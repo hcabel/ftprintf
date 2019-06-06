@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:00:54 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/05 15:57:49 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/06 14:23:49 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,5 @@ void					display(t_flags *lst_flags, t_variable *lst_variable
 */
 void					put_cast_char(void *arg);
 void					put_cast_str(void *arg);
-void					put_cast_int(void *arg);
-void					put_cast_unsigned_int(void *arg);
-void					put_cast_short(void *arg);
-void					put_cast_unsigned_short(void *arg);
-void					put_cast_long(void *arg);
-void					put_cast_unsigned_long(void *arg);
 
 #endif
