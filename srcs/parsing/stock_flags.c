@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:48:12 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/05 12:44:39 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/07 10:46:10 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static t_flags	*init_lst(void)
 	if (!(new = (t_flags*)malloc(sizeof(t_flags))))
 		return (NULL);
 	new->options = ft_strnew(0);
-	new->lenght_min = 0;
-	new->precis = 0;
+	new->lenght_min = -1;
+	new->precis = -1;
 	new->scale = ft_strnew(0);
 	new->type = '\0';
 	new->next = NULL;

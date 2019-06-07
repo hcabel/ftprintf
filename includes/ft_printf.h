@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:00:54 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/06 14:23:49 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/07 11:06:05 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,16 @@ void					display(t_flags *lst_flags, t_variable *lst_variable
 							, t_constchar *lst_constchar);
 
 /*
-**	cast.c
+**	utils.c
 */
-void					put_cast_char(void *arg);
-void					put_cast_str(void *arg);
+void					fill(char chara, int size);
+int						find(char *str, char chara);
+void					putnstr(char *str, int size);
+
+/*
+**	show.c
+*/
+void					show_c(void *arg, t_flags *lst_flags);
+void					show_s(void *arg, t_flags *lst_flags);
 
 #endif

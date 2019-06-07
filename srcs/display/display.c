@@ -6,33 +6,11 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 13:46:47 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/06 16:33:26 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/07 10:19:48 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static int	find(char *str, char chara)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == chara)
-			return (1);
-	}
-	return (0);
-}
-
-static void	fill(char chara, int size)
-{
-	int	i;
-
-	i = 0;
-	while (i++ < size)
-		ft_putchar(chara);
-}
 
 void	display(t_flags *lst_flags, t_variable *lst_variable
 			, t_constchar *lst_constchar)
@@ -47,9 +25,9 @@ void	display(t_flags *lst_flags, t_variable *lst_variable
 		if (lst_variable && lst_flags)
 		{
 			if (lst_flags->type == 'c')
-				ft_putchar(lst_flags->type);
+				show_c(lst_variable->content, lst_flags);
 			else if (lst_flags->type == 's')
-				ft_putchar(lst_flags->type);
+				show_s(lst_variable->content, lst_flags);
 			else if (lst_flags->type == 'p')
 				ft_putchar(lst_flags->type);
 			else if (lst_flags->type == 'd' || lst_flags->type == 'i')
