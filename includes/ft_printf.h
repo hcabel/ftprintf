@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:00:54 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/07 11:06:05 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/07 12:39:34 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,17 @@ void					display(t_flags *lst_flags, t_variable *lst_variable
 							, t_constchar *lst_constchar);
 
 /*
-**	utils.c
+**	utils_char.c
 */
 void					fill(char chara, int size);
 int						find(char *str, char chara);
 void					putnstr(char *str, int size);
+
+/*
+**	utils_number.c
+*/
+void					show_nbr(long long n, int scale);
+long long				count_nu(long long nb);
 
 /*
 **	show.c

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:22:35 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/07 11:11:24 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/07 12:25:03 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	fill(char chara, int size)
+void		fill(char chara, int size)
 {
 	int	i;
 
@@ -23,11 +23,13 @@ void	fill(char chara, int size)
 		ft_putchar(chara);
 }
 
-int		find(char *str, char chara)
+int			find(char *str, char chara)
 {
 	int	i;
 
 	i = 0;
+	if (!*str)
+		return (0);
 	while (str[i])
 	{
 		if (str[i] == chara)
@@ -37,7 +39,7 @@ int		find(char *str, char chara)
 	return (0);
 }
 
-void	putnstr(char *str, int size)
+void		putnstr(char *str, int size)
 {
 	int	scale;
 

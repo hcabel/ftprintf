@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/05 13:46:47 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/07 10:19:48 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/06/07 12:52:45 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	display(t_flags *lst_flags, t_variable *lst_variable
 			else if (lst_flags->type == 'p')
 				ft_putchar(lst_flags->type);
 			else if (lst_flags->type == 'd' || lst_flags->type == 'i')
-				ft_putchar(lst_flags->type);
+				show_d(lst_variable->content, lst_flags);
 			else if (lst_flags->type == 'o')
 				ft_putchar(lst_flags->type);
 			else if (lst_flags->type == 'x')
