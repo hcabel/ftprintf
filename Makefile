@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/06/07 12:27:58 by hcabel           ###   ########.fr        #
+#    Updated: 2019/07/06 19:23:40 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,6 @@ OBJECT_REP		=	objects
 INCLUDE_REP		=	includes
 SOURCES_REP		=	srcs
 PARSING_REP		=	$(SOURCES_REP)/parsing
-FUNCTION_REP	=	$(SOURCES_REP)/conversions
 DISPLAY_REP		=	$(SOURCES_REP)/display
 
 INCLUDES_FILE	=	ft_printf.h
@@ -49,8 +48,6 @@ INCLUDES_FILE	=	ft_printf.h
 PARSING_SRCS	=	parsing.c			\
 					stock_variable.c	\
 					stock_flags.c
-					
-FUNCTION_SRCS	=	ft_itoa_base.c
 
 DISPLAY_SRCS	=	display.c			\
 					show.c				\
@@ -63,7 +60,6 @@ OTHERS_SRCS		=	main.c				\
 INCLUDES		=	-I $(INCLUDE_REP)/ -I libft/$(INCLUDE_REP)
 
 OBJECTS			=	$(addprefix $(OBJECT_REP)/, $(PARSING_SRCS:.c=.o))	\
-					$(addprefix $(OBJECT_REP)/, $(FUNCTION_SRCS:.c=.o))	\
 					$(addprefix $(OBJECT_REP)/, $(OTHERS_SRCS:.c=.o))	\
 					$(addprefix $(OBJECT_REP)/, $(DISPLAY_SRCS:.c=.o))	
 
@@ -86,10 +82,6 @@ $(OBJECT_REP)/%.o: $(SOURCES_REP)/%.c $(INCLUDE_REP)/$(INCLUDES_FILE) Makefile
 	gcc $(FLAGS) -o $@ $(INCLUDES) -c $<
 
 $(OBJECT_REP)/%.o: $(PARSING_REP)/%.c $(INCLUDE_REP)/$(INCLUDES_FILE) Makefile
-	echo "\r\033[0;35mCreate \033[0;32m[\033[0;33m$@\033[0;32m]				\c"
-	gcc $(FLAGS) -o $@ $(INCLUDES) -c $<
-
-$(OBJECT_REP)/%.o: $(FUNCTION_REP)/%.c $(INCLUDE_REP)/$(INCLUDES_FILE) Makefile
 	echo "\r\033[0;35mCreate \033[0;32m[\033[0;33m$@\033[0;32m]				\c"
 	gcc $(FLAGS) -o $@ $(INCLUDES) -c $<
 
