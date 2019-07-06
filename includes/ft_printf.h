@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:00:54 by hcabel            #+#    #+#             */
-/*   Updated: 2019/06/07 12:39:34 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/01 19:12:19 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include "libft.h"
 # include <stdlib.h>
-# include <stdio.h>
-# include <limits.h>
 # include <stdarg.h>
+# include <limits.h>
+
+# include <stdio.h>
 
 typedef struct			s_variable
 {
