@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 00:04:11 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/09 15:57:31 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/09 16:00:33 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char *convert_to_char(void *arg, char type, int size)
 	else if (type == 'p')
 		str[0] = type;
 	else if (type == 'd' || type == 'i')
-		str[0] = type;
+		str = ft_itoa((int) arg);
 	else if (type == 'o')
 		str[0] = type;
 	else if (type == 'x' || type == 'X')
