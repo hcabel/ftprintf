@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 00:04:11 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/09 21:03:09 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/07/09 23:52:51 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static char *convert_to_char(void *arg, char type, int size)
 	else if (type == 'd' || type == 'i')
 		str = ft_itoa((int) arg);
 	else if (type == 'o')
-		str[0] = type;
+		str = ft_itoa_base(arg, 8);
 	else if (type == 'x' || type == 'X')
 		str = ft_itoa_base(arg, 16);
 	else if (type == 'u')
