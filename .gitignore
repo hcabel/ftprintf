@@ -1,4 +1,7 @@
 libft
-*.o
-printf
 .vscode
+objects
+printf
+a.out
+*.swd
+*.o

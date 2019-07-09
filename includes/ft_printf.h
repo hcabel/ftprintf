@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 19:15:23 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/09 00:06:51 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/09 15:34:32 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ typedef struct			s_flags
 	char				scale[2];
 	char				type;
 }						t_flags;
-
-typedef struct			s_func
-{
-	void				(*f)(void *, t_flags);
-	char				type;
-}						t_func;
 
 /*
 **	ft_printf.c
