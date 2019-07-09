@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/09 00:49:00 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/09 20:59:43 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,7 +198,7 @@ int		main(int argc, char **argv)
 		ft_printf("20) Mon PRINTF  : |%-+.10d|\n", 42);
 		printf("21) Vrai PRINTF : |%d|\n", -42);
 		ft_printf("21) Mon PRINTF  : |%d|\n", -42);
-		return (0);
+		//return (0);
 		printf("22) Vrai PRINTF : |%10d|\n", -42);
 		ft_printf("22) Mon PRINTF  : |%10d|\n", -42);
 		printf("23) Vrai PRINTF : |%.10d|\n", -42);
