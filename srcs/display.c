@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 19:57:27 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/09 00:59:05 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/13 16:01:31 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,13 @@ static int	check_scale(t_flags *flags, char *str)
 	return (0);
 }
 
-int			pf_display(void *arg, char *str)
+int			pf_display(va_list args, char *str)
 {
 	t_flags	flags;
 	int 	i;
 
+	if (str[0] == '%' && str[1] == '%')
+		return (1);
 	i = 0;
 	while (i < 5)
 		flags.options[i++] = '\0';
@@ -106,6 +108,15 @@ int			pf_display(void *arg, char *str)
 	i += check_precis(&flags, str + i);
 	i += check_scale(&flags, str + i);
 	flags.type = str[i++];
-	pf_dispatch(flags, arg);
+	if (flags.type == 'd' || flags.type == 'i')
+		flags.options[2] = '\0';
+	if (flags.type == 'u' || flags.type == 'x' || flags.type == 'X' || flags.type == 'o')
+	{
+		flags.options[1] = '\0';
+		flags.options[4] = '\0';
+	}
+	if (flags.type == 'c' || flags.type == 's')
+		ft_bzero(flags.options + 1, sizeof(char) * 5);
+	pf_dispatch(flags, va_arg(args, void*));
 	return (i);
 }

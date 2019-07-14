@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 19:15:23 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/09 15:34:32 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/11 13:21:48 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int						ft_printf(const char *format, ...);
 /*
 **	display.c
 */
-int						pf_display(void *arg, char *str);
+int						pf_display(va_list args, char *str);
 
 /*
 **	dispact.c
