@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 00:04:11 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/14 18:49:34 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/14 18:54:35 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ static char *convert_to_char(void *arg, char type, int size, int *signe)
 	if (type == 'c')
 		str[0] = (char)arg;
 	else if (type == 's')
-		str = (char*)arg;
+	{
+		if (str != NULL)
+			str = (char*)arg;
+	}
 	else if (type == 'p')
 		str[0] = type;
 	else if ((type == 'd' || type == 'i') && (int)arg < 0)

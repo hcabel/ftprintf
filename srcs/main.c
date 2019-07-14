@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/09 20:59:43 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/07/14 19:01:03 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int		main(int argc, char **argv)
 	}
 	else if (argc == 1)
 	{
-		ft_printf("03) Mon PRINTF  : |%-----c|\n", '!');
+		printf("21) Vrai PRINTF : |%#o|\n", 0);
+		ft_printf("21) Mon PRINTF  : |%#o|\n", 0);
+		printf("22) Vrai PRINTF : |%#.o|\n", 0);
+		ft_printf("22) Mon PRINTF  : |%#.o|\n", 0);
 		return (0);
 	}
 	str = argv[1];
@@ -51,7 +54,7 @@ int		main(int argc, char **argv)
 		printf("09) Vrai PRINTF : |%-5c|\n", '\0');
 		ft_printf("09) Mon PRINTF  : |%-5c|\n", '\0');
 		printf("10) Vrai PRINTF : |%1c|\n", '\0');
-		ft_printf("10} Mon PRINTF  : |%1c|\n", '\0');
+		ft_printf("10) Mon PRINTF  : |%1c|\n", '\0');
 	}
 	else if (str[0] == 's' && (!str[1] || !str[2]))
 	{
@@ -1029,6 +1032,8 @@ int		main(int argc, char **argv)
 		ft_printf("28) Mon PRINTF  : |%#x| |%#x|\n", (unsigned int)-1, UINT_MAX + 1);
 		printf("29) Vrai PRINTF : |%x| |%x|\n", (unsigned int)-1, UINT_MAX + 1);
 		ft_printf("29) Mon PRINTF  : |%x| |%x|\n", (unsigned int)-1, UINT_MAX + 1);
+		printf("30) Vrai PRINTF : |%#.x|\n", 10);
+		ft_printf("30) Mon PRINTF  : |%#.x|\n", 10);
 	}
 	else if (str[0] == 'h' && str[1] == 'x' && !str[2])
 	{
@@ -1648,7 +1653,7 @@ int		main(int argc, char **argv)
 		printf("15) Vrai PRINTF : |%08hu|\n", (unsigned short)64);
 		ft_printf("15) Mon PRINTF  : |%08hu|\n", (unsigned short)64);
 		printf("16) Vrai PRINTF : |%03.4hu|\n", (unsigned short)10);
-		ft_printf("16) Mon PRINTF  : |%03.4hu|\n", (unsigned short)10);                                                          
+		ft_printf("16) Mon PRINTF  : |%03.4hu|\n", (unsigned short)10);
 		printf("17) Vrai PRINTF : |%.hu|\n", (unsigned short)0);
 		ft_printf("17) Mon PRINTF  : |%.hu|\n", (unsigned short)0);
 		printf("18) Vrai PRINTF : |%.hu|\n", (unsigned short)88);
@@ -1692,7 +1697,7 @@ int		main(int argc, char **argv)
 		printf("15) Vrai PRINTF : |%08hhu|\n", (unsigned char)64);
 		ft_printf("15) Mon PRINTF  : |%08hhu|\n", (unsigned char)64);
 		printf("16) Vrai PRINTF : |%03.4hhu|\n", (unsigned char)10);
-		ft_printf("16) Mon PRINTF  : |%03.4hhu|\n", (unsigned char)10);                                                          
+		ft_printf("16) Mon PRINTF  : |%03.4hhu|\n", (unsigned char)10);
 		printf("17) Vrai PRINTF : |%.hhu|\n", (unsigned char)0);
 		ft_printf("17) Mon PRINTF  : |%.hhu|\n", (unsigned char)0);
 		printf("18) Vrai PRINTF : |%.hhu|\n", (unsigned char)88);
