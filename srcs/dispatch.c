@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 00:04:11 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/15 19:19:05 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/15 19:29:38 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	cal_size(void *arg, char type)
 	else if (type == 'x' || type == 'X')
 		return (ft_baselen((unsigned int)arg, 16));
 	else if (type == 'u')
-		return ((int)arg == NULL ? -1 : ft_nbrlen(arg));
+		return (ft_nbrlen((unsigned int)arg));
 }
 
 static char *convert_to_char(void *arg, char type, int size, int *signe)
@@ -74,7 +74,7 @@ static char *convert_to_char(void *arg, char type, int size, int *signe)
 	else if (type == 'x' || type == 'X')
 		str = ft_itoa_base((unsigned int)arg, 16);
 	else if (type == 'u')
-		str[0] = type;
+		str = ft_itoa((unsigned int)arg);
 	*signe = (sign == 0 ? 1 : 0);
 	return (str);
 }
