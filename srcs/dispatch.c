@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 00:04:11 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/14 18:54:35 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/15 19:19:05 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static int	cal_size(void *arg, char type)
 		return (1);
 	else if (type == 'd' || type == 'i')
 		if ((int)arg < 0)
-			return ((int)arg == NULL ? -1 : ft_nbrlen((int)arg) - 1);
+			return (ft_nbrlen((int)arg) - 1);
 		else
-			return ((int)arg == NULL ? -1 : ft_nbrlen((int)arg));
+			return (ft_nbrlen((int)arg));
 	else if (type == 'o')
 		return (ft_baselen((unsigned int)arg, 8));
 	else if (type == 'x' || type == 'X')
@@ -106,6 +106,11 @@ void		calc_size(int *zero_si, int *space_si, int *str_si, t_flags flags)
 		if (flags.length > *str_si)
 			*space_si = flags.length - *str_si;
 	}
+	if ((flags.options[2] == '#' && flags.type == 'o')
+		|| (flags.options[1] && (flags.type == 'd' || flags.type == 'i')))
+		*space_si -= 1;
+	if (flags.options[2] == '#' && (flags.type == 'x' || flags.type == 'X'))
+		*space_si -= 2;
 	if (flags.options[3] == '0')
 	{
 		if (flags.precis != -1)
@@ -122,11 +127,6 @@ void		calc_size(int *zero_si, int *space_si, int *str_si, t_flags flags)
 			*space_si = 0;
 		}
 	}
-	if (flags.options[2] == '#')
-		if (flags.type == 'x' || flags.type == 'X')
-			*space_si -= 2;
-		else if (flags.type == 'o')
-			*space_si -= 1;
 }
 
 void		pf_dispatch(t_flags flags, void *arg)
@@ -154,6 +154,12 @@ void		pf_dispatch(t_flags flags, void *arg)
 				zero_size++;
 	}
 	calc_size(&zero_size, &space_size, &str_size, flags);
+	if ((flags.options[4] == ' ' && !sign && flags.options[1] != '+')
+		|| (sign && flags.options[1] != '+'))
+		if (flags.options[3] == '0' && flags.precis == -1)
+			zero_size--;
+		else
+			space_size--;
 	if (flags.options[0] != '-')
 		fill(space_size, ' ');
 	if (flags.options[2] == '#' && ((unsigned int)arg != 0 || flags.precis == 0))
@@ -164,6 +170,12 @@ void		pf_dispatch(t_flags flags, void *arg)
 				write(1, &"0X", 2);
 			else
 				write(1, &"0x", 2);
+	if (flags.options[1] == '+' && (int)arg >= 0)
+		write(1, &"+", 1);
+	else if (flags.options[4] == ' ' && !sign)
+		write(1, &" ", 1);
+	if (sign)
+		write(1, &"-", 1);
 	if (flags.type != 's' || flags.type != 'c')
 		fill(zero_size, '0');
 	if (flags.precis == 0 && (unsigned int)arg == 0)
