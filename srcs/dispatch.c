@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 00:04:11 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/15 19:29:38 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/15 23:40:03 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static char *convert_to_char(void *arg, char type, int size, int *signe)
 	else if (type == 'p')
 		str[0] = type;
 	else if ((type == 'd' || type == 'i') && (int)arg < 0)
-		str = ft_itoa(((int)arg) * sign++);
+		str = ft_itoa((long long)((int)arg) * sign++);
 	else if (type == 'd' || type == 'i')
 		str = ft_itoa((int)arg);
 	else if (type == 'o')
@@ -87,8 +87,10 @@ void		calc_size(int *zero_si, int *space_si, int *str_si, t_flags flags)
 	*zero_si = 0;
 	if (flags.precis != -1 && flags.length != -1)
 	{
-		if (flags.precis > *str_si)
+		if (flags.precis > *str_si && flags.type != 's')
 			*zero_si = flags.precis - *str_si;
+		else if (flags.precis < *str_si && flags.type == 's')
+			*str_si = flags.precis;
 		if (flags.type == 'o' && flags.options[2] == '#')
 			*zero_si -= 1;
 		if (flags.length > *zero_si + *str_si)
@@ -96,8 +98,10 @@ void		calc_size(int *zero_si, int *space_si, int *str_si, t_flags flags)
 	}
 	else if (flags.precis != -1  && flags.length == -1)
 	{
-		if (flags.precis > *str_si)
+		if (flags.precis > *str_si && flags.type != 's')
 			*zero_si = flags.precis - *str_si;
+		else if (flags.precis < *str_si && flags.type == 's')
+			*str_si = flags.precis;
 		if (flags.type == 'o' && flags.options[2] == '#')
 			*zero_si -= 1;
 	}
@@ -111,7 +115,7 @@ void		calc_size(int *zero_si, int *space_si, int *str_si, t_flags flags)
 		*space_si -= 1;
 	if (flags.options[2] == '#' && (flags.type == 'x' || flags.type == 'X'))
 		*space_si -= 2;
-	if (flags.options[3] == '0')
+	if (flags.options[3] == '0' && flags.type != 's')
 	{
 		if (flags.precis != -1)
 		{
@@ -174,7 +178,7 @@ void		pf_dispatch(t_flags flags, void *arg)
 		write(1, &"+", 1);
 	else if (flags.options[4] == ' ' && !sign)
 		write(1, &" ", 1);
-	if (sign)
+	if (sign && flags.type != 'u')
 		write(1, &"-", 1);
 	if (flags.type != 's' || flags.type != 'c')
 		fill(zero_size, '0');
