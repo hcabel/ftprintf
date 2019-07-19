@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+         #
+#    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/07/10 18:11:32 by sylewis          ###   ########.fr        #
+#    Updated: 2019/07/19 07:11:53 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 DEBUG			=	yes
 DL				=	yes
 
-ifeq ($(DEBUG), yes) 
+ifeq ($(DEBUG), yes)
 	MSG			=	echo "\033[0;31m/!\\ Warning /!\\ \
 						\033[0;36mDebug mode ON\033[0;35m"
 	FLAGS		=   -g
@@ -41,17 +41,17 @@ OBJECT_REP		=	objects
 INCLUDE_REP		=	includes
 SOURCES_REP		=	srcs
 
-INCLUDES_FILE	=	ft_printf.h	
+INCLUDES_FILE	=	ft_printf.h
 
 SRCS			=	main.c				\
 					ft_printf.c			\
 					display.c			\
 					dispatch.c			\
-					
+					utils.c
 
 INCLUDES		=	-I $(INCLUDE_REP)/ -I libft/$(INCLUDE_REP)
 
-OBJECTS			=	$(addprefix $(OBJECT_REP)/, $(SRCS:.c=.o))	
+OBJECTS			=	$(addprefix $(OBJECT_REP)/, $(SRCS:.c=.o))
 
 .PHONY: all clean fclean re mkdir make
 .SILENT: all clean fclean re $(OBJECT_FILE) $(NAME) $(OBJECTS) mkdir make \
@@ -63,7 +63,7 @@ all: update $(NAME)
 $(NAME): mkdir make $(OBJECTS)
 	echo "\n\033[0;36mCreate [$@]\n\033[0;35m"
 	gcc $(FLAGS) -o $(NAME) $(OBJECTS) -L libft/ -lft
-	
+
 mkdir:
 	mkdir -p $(OBJECT_REP)
 
