@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 00:04:11 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/19 07:08:02 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/19 14:25:26 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	get_size(void *arg, char type)
 	else if (type == 's')
 		return ((char*)arg == NULL ? -1 : ft_strlen((char*)arg));
 	else if (type == 'p')
-		return (1);
+		return (ft_baselen((unsigned long)arg, 16) + 2);
 	else if (type == 'd' || type == 'i')
 		if ((int)arg < 0)
 			return (ft_nbrlen((int)arg) - 1);
@@ -50,7 +50,7 @@ static char *convert_to_char(void *arg, char type, int size, int *signe)
 			str = (char*)arg;
 	}
 	else if (type == 'p')
-		str[0] = type;
+		str = ft_itoa_base((unsigned long)arg, 16);
 	else if ((type == 'd' || type == 'i') && (int)arg < 0)
 		str = ft_itoa((long long)((int)arg) * sign++);
 	else if (type == 'd' || type == 'i')
@@ -130,10 +130,11 @@ void		pf_dispatch(t_flags flags, void *arg)
 			space_size--;
 	if (!flags.options[0])
 		fill(space_size, ' ');
-	if (flags.options[2] && ((unsigned int)arg != 0 || flags.precis == 0))
+	if (flags.type == 'p' || (flags.options[2]
+		&& ((unsigned int)arg != 0 || flags.precis == 0)))
 		if (flags.type == 'o')
 			zero_size = (zero_size < 0 ? 1 : zero_size + 1);
-		else if ((unsigned int)arg != 0)
+		else if (flags.type == 'p' || (unsigned int)arg != 0)
 			if (flags.type == 'X')
 				write(1, &"0X", 2);
 			else
