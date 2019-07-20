@@ -6,66 +6,11 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 00:04:11 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/19 14:25:26 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/20 15:13:21 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static int	get_size(void *arg, char type)
-{
-	if (type == 'c')
-		return (1);
-	else if (type == 's')
-		return ((char*)arg == NULL ? -1 : ft_strlen((char*)arg));
-	else if (type == 'p')
-		return (ft_baselen((unsigned long)arg, 16) + 2);
-	else if (type == 'd' || type == 'i')
-		if ((int)arg < 0)
-			return (ft_nbrlen((int)arg) - 1);
-		else
-			return (ft_nbrlen((int)arg));
-	else if (type == 'o')
-		return (ft_baselen((unsigned int)arg, 8));
-	else if (type == 'x' || type == 'X')
-		return (ft_baselen((unsigned int)arg, 16));
-	else if (type == 'u')
-		return (ft_nbrlen((unsigned int)arg));
-}
-
-static char *convert_to_char(void *arg, char type, int size, int *signe)
-{
-	char	*str;
-	int		sign;
-
-	sign = -1;
-	if (type != 'x' || type != 'X' || type != 's')
-		if (!(str = (char*)malloc(sizeof(char) * size)))
-			return (NULL);
-	if (type == 'c')
-		str[0] = (char)arg;
-	else if (type == 's')
-	{
-		if (str != NULL)
-			str = (char*)arg;
-	}
-	else if (type == 'p')
-		str = ft_itoa_base((unsigned long)arg, 16);
-	else if ((type == 'd' || type == 'i') && (int)arg < 0)
-		str = ft_itoa((long long)((int)arg) * sign++);
-	else if (type == 'd' || type == 'i')
-		str = ft_itoa((int)arg);
-	else if (type == 'o')
-		str = ft_itoa_base((unsigned int)arg, 8);
-	else if (type == 'x' || type == 'X')
-		str = ft_itoa_base((unsigned int)arg, 16);
-	else if (type == 'u')
-		str = ft_itoa((unsigned int)arg);
-	*signe = (sign == 0 ? 1 : 0);
-	return (str);
-}
-
-
 
 void		calc_size(int *zero_si, int *space_si, int *str_si, t_flags flags)
 {
@@ -109,8 +54,8 @@ void		pf_dispatch(t_flags flags, void *arg)
 	char	*str_arg;
 	int		sign;
 
-	if ((str_size = get_size(arg, flags.type)) != -1)
-		str_arg = convert_to_char(arg, flags.type, str_size, &sign);
+	if ((str_size = get_size(arg, flags)) != -1)
+		str_arg = convert_to_char(arg, flags, str_size, &sign);
 	str_arg = (str_size == -1 ? "(null)" : str_arg);
 	str_size = (str_size == -1 ? 6 : str_size);
 	zero_size = 0;
@@ -149,7 +94,7 @@ void		pf_dispatch(t_flags flags, void *arg)
 		fill(zero_size, '0');
 	if (flags.precis == 0 && (unsigned int)arg == 0)
 		str_size = 0;
-	write(1, str_arg, str_size);
+	write(1, str_arg + sign, str_size);
 	if (flags.options[0])
 		fill(space_size, ' ');
 }

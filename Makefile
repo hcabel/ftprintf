@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/07/19 07:11:53 by hcabel           ###   ########.fr        #
+#    Updated: 2019/07/20 14:40:16 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRCS			=	main.c				\
 					ft_printf.c			\
 					display.c			\
 					dispatch.c			\
+					get_variable.c		\
 					utils.c
 
 INCLUDES		=	-I $(INCLUDE_REP)/ -I libft/$(INCLUDE_REP)
