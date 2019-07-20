@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 19:57:27 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/19 22:37:21 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/07/20 15:15:23 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,23 +119,4 @@ int			pf_display(va_list args, char *str)
 		ft_bzero(flags.options + 1, sizeof(char) * 5);
 	pf_dispatch(flags, va_arg(args, void*));
 	return (i);
-}
-
-void	print_float()
-{
-	float = (double)arg;
-	ft_putnbr(float);
-	ft_putchar('.');
-	while (precis > 0)
-	{
-		precis--;
-		float *= 10;
-		ft_putchar(float % 10 + '0');
-	}
-	float *= 10;
-	final_num = float % 10;
-	if (float * 10 % 10 >= 5)
-	ft_putchar(final_num++ + '0');
-	else
-		ft_putchar(final_num + '0');
 }
