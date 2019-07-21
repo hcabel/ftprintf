@@ -6,29 +6,14 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 03:50:49 by sylewis           #+#    #+#             */
-/*   Updated: 2019/07/22 01:18:27 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/07/22 01:33:24 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <limits.h>
-
-void    ft_putchar(char c)
-{
-    write(1, &c, 1);
-}
-
-void    ft_putstr(char *str)
-{
-    int i = 0;
-    while (str[i] != 0)
-    {
-        ft_putchar(str[i]);
-        i++;
-    }
-}
+#include "libft.h"
 
 static void        decimal(char **str_addr, double deci, int precis, int len)
 {
@@ -132,13 +117,4 @@ char	    *ft_ftoa(long double n, int precis)
     ft_itoa_float(&str, whole, len);
     decimal(&str, ft_dabs(n - (long double)whole), precis, len + 1);
     return(str[0] == '\0' ? str + 1 : str);
-}
-
-int main()
-{
-    float   n = 214748364834567;
-    ft_putstr(ft_ftoa((double)n, 10));
-    printf("\n%.10f\n", n);
-    ft_putchar('\n');
-    return (0);
 }
