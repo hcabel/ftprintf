@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 19:15:23 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/21 19:30:46 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/07/22 01:26:13 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,13 @@ void					fill(int size, char c);
 **	ft_ftoa.c
 */
 char	    *ft_ftoa(double n, int precis);
+
+/*
+**	get_variable.c
+*/
+int						get_size(void *arg, t_flags flags);
+char					*convert_to_char(void *arg, t_flags flags,
+							int size, int *signe);
+
 
 #endif
