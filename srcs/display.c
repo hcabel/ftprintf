@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 19:57:27 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/19 22:37:21 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/07/20 04:32:05 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,20 +121,21 @@ int			pf_display(va_list args, char *str)
 	return (i);
 }
 
+
 void	print_float()
 {
-	float = (double)arg;
-	ft_putnbr(float);
+	f = (double)arg;
+	ft_putnbr(ft_atoi(f));
 	ft_putchar('.');
 	while (precis > 0)
 	{
 		precis--;
-		float *= 10;
-		ft_putchar(float % 10 + '0');
+		f *= 10;
+		ft_putchar(f % 10 + '0');
 	}
-	float *= 10;
-	final_num = float % 10;
-	if (float * 10 % 10 >= 5)
+	f *= 10;
+	final_num = f % 10;
+	if (f * 10 % 10 >= 5)
 	ft_putchar(final_num++ + '0');
 	else
 		ft_putchar(final_num + '0');
