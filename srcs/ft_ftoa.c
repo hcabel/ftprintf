@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 03:50:49 by sylewis           #+#    #+#             */
-/*   Updated: 2019/07/22 01:33:24 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/07/23 20:56:15 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,30 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "libft.h"
+#include "printf.h"
+
+static void    decimal_rounding(char **str_addr, int i)
+{
+    char    *str;
+
+    str = *str_addr;
+    while (str[i] == '9' && i >= 0)
+    {
+        str[i] = '0';
+        i--;
+        if (str[i] == '.')
+            i--;
+    }
+        if (str[i] == '-')
+        {
+            str[1] = '1';                
+            str[0] = '-';
+        }
+        else if (i == 0)
+            str[0] = '1';
+        else if (str[i] != '9')
+            str[i] += 1;
+}
 
 static void        decimal(char **str_addr, double deci, int precis, int len)
 {
@@ -32,11 +56,13 @@ static void        decimal(char **str_addr, double deci, int precis, int len)
     }
     i--;
     deci *= 10;
-    if ((int)deci % 10 >= 5)
+    if ((long int)deci % 10 >= 5)
     {
         if (str[i] != '9')
             str[i] += 1;
         else
+        decimal_rounding(&str, i);
+      /*  
         {
             while (str[i] == '9' && i >= 0)
             {
@@ -54,7 +80,7 @@ static void        decimal(char **str_addr, double deci, int precis, int len)
                 str[0] = '1';
             else if (str[i] != '9')
                 str[i] += 1;
-        }
+        }*/
     }
 }
 
@@ -102,7 +128,7 @@ static double      ft_dabs(double n)
 {
     return (n > 0.0 ? n : -n);
 }
-char	    *ft_ftoa(long double n, int precis)
+char	    *ft_ftoa(double n, int precis)
 {
     int     whole;
     int     len;
@@ -111,10 +137,15 @@ char	    *ft_ftoa(long double n, int precis)
     precis++;
     whole = (int)n;
     len = count(whole);
-    if (!(str = (char*)malloc(sizeof(*str) * (len + precis + 2 + 1))))
+    if (!(str = (char*)ft_memalloc(sizeof(*str) * (len + precis + 2 + 1))))
         return (NULL);
     str[len + precis + 2] = '\0';
     ft_itoa_float(&str, whole, len);
-    decimal(&str, ft_dabs(n - (long double)whole), precis, len + 1);
+    decimal(&str, ft_dabs(n - (double)whole), precis, len + 1);
     return(str[0] == '\0' ? str + 1 : str);
 }
+
+
+
+
+
