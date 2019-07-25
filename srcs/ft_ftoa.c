@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 03:50:49 by sylewis           #+#    #+#             */
-/*   Updated: 2019/07/23 20:56:15 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/07/25 18:49:58 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void        decimal(char **str_addr, double deci, int precis, int len)
         deci *= 10;
         str[i] = (long int)deci % 10 + '0';
         i++;
+        deci -= (int)deci % 10;
     }
     i--;
     deci *= 10;
@@ -62,25 +63,6 @@ static void        decimal(char **str_addr, double deci, int precis, int len)
             str[i] += 1;
         else
         decimal_rounding(&str, i);
-      /*  
-        {
-            while (str[i] == '9' && i >= 0)
-            {
-                str[i] = '0';
-                i--;
-                if (str[i] == '.')
-                    i--;
-            }
-            if (str[i] == '-')
-            {
-                str[1] = '1';
-                str[0] = '-';
-            }
-            else if (i == 0)
-                str[0] = '1';
-            else if (str[i] != '9')
-                str[i] += 1;
-        }*/
     }
 }
 

@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/23 21:09:23 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/07/25 18:50:46 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ int		main(int argc, char **argv)
 		printf("22) Vrai PRINTF : |%#.o|\n", 0);
 		ft_printf("22) Mon PRINTF  : |%#.o|\n", 0);
 		char *ftoa;
-		ftoa = ft_ftoa(-123.01, 1);
+		ftoa = ft_ftoa(-123.01, 20);
 		ft_putstr(ftoa);
 		ft_putchar('\n');
-		printf("%#.1f\n", -123.01);
-		ft_putstr(ft_ftoa(-4567.0,1));
+		printf("%#.20f\n", -123.01);
+		ft_putstr(ft_ftoa(-4567.090283896238560902838962385609028389623856,100));
 		ft_putchar('\n');
-		printf("float : %#f\n", (float)-45);
+		printf("%.100f\n", -4567.090283896238560902838962385609028389623856);
 		return (0);
 	}
 	str = argv[1];
