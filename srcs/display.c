@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 19:57:27 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/20 15:15:23 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/22 11:56:34 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,19 +89,15 @@ static int	check_scale(t_flags *flags, char *str)
 	return (0);
 }
 
-int			pf_display(va_list args, char *str)
+int			pf_display(va_list args, char *str, int *ret)
 {
 	t_flags	flags;
 	int 	i;
 
 	if (str[0] == '%' && str[1] == '%')
 		return (1);
-	i = 0;
-	while (i < 5)
-		flags.options[i++] = '\0';
-	i = 0;
-	while (i < 2)
-		flags.scale[i++] = '\0';
+	ft_bzero(flags.options, 5);
+	ft_bzero(flags.scale, 2);
 	i = 1;
 	i += check_options(&flags, str + i);
 	i += check_length(&flags, str + i);
@@ -110,13 +106,14 @@ int			pf_display(va_list args, char *str)
 	flags.type = str[i++];
 	if (flags.type == 'd' || flags.type == 'i')
 		flags.options[2] = '\0';
-	if (flags.type == 'u' || flags.type == 'x' || flags.type == 'X' || flags.type == 'o')
+	if (flags.type == 'u' || flags.type == 'x' || flags.type == 'X'
+		|| flags.type == 'o')
 	{
 		flags.options[1] = '\0';
 		flags.options[4] = '\0';
 	}
 	if (flags.type == 'c' || flags.type == 's')
 		ft_bzero(flags.options + 1, sizeof(char) * 5);
-	pf_dispatch(flags, va_arg(args, void*));
+	*ret += pf_dispatch(flags, va_arg(args, void*));
 	return (i);
 }

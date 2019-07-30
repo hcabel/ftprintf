@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 19:15:23 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/20 15:05:30 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/30 17:03:29 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,45 @@
 # define FT_PRINTF_H
 
 # include "libft.h"
-# include <stdlib.h>
 # include <stdarg.h>
-# include <limits.h>
 
-# include <stdio.h>
-
-typedef struct			s_flags
+typedef struct	s_flags
 {
-	char			    options[5];
-	int					length;
-	int					precis;
-	char				scale[2];
-	char				type;
-}						t_flags;
+	char		options[5];
+	int			length;
+	int			precis;
+	char		scale[2];
+	char		type;
+}				t_flags;
 
 /*
 **	ft_printf.c
 */
-void					pf_error(char *reason); //useless
-int						ft_printf(const char *format, ...);
+void			pf_error(char *reason); //useless
+int				ft_printf(const char *format, ...);
 
 /*
 **	display.c
 */
-int						pf_display(va_list args, char *str);
+int				pf_display(va_list args, char *str, int *ret);
 
 /*
 **	dispact.c
 */
-void					pf_dispatch(t_flags flags, void *arg);
+int				pf_dispatch(t_flags flags, void *arg);
 
 /*
 **	utils.c
 */
-void					fill(int size, char c);
+int				add(char* add, char **str_addr, int start, int end);
+int				fill(int size, char c, char **str_addr, int start);
+int				ft_ubaselen(unsigned long long nbr, int base);
+char			*ft_utoa_base(unsigned long long nbr, int base, char c);
 
 /*
 **	get_variable.c
 */
-int						get_size(void *arg, t_flags flags);
-char					*convert_to_char(void *arg, t_flags flags,
-							int size, int *signe);
+char			*convert_to_char(void *arg, t_flags flags, int *sign);
 
 
 #endif
