@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 19:15:23 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/30 17:03:29 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/30 19:39:53 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,18 @@ int				ft_ubaselen(unsigned long long nbr, int base);
 char			*ft_utoa_base(unsigned long long nbr, int base, char c);
 
 /*
+**	ft_ftoa.c
+*/
+char	    *ft_ftoa(double n, int precis);
+
+/*
 **	get_variable.c
 */
 char			*convert_to_char(void *arg, t_flags flags, int *sign);
 
+/*
+**	ft_ftoa.c
+*/
+char			*ft_ftoa(double n, int precis);
 
 #endif

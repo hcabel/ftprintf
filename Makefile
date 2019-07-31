@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
+#    By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/07/20 14:40:16 by hcabel           ###   ########.fr        #
+#    Updated: 2019/07/22 01:27:00 by sylewis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,9 @@ SRCS			=	main.c				\
 					display.c			\
 					dispatch.c			\
 					get_variable.c		\
-					utils.c
+					utils.c				\
+					ft_ftoa.c
+				
 
 INCLUDES		=	-I $(INCLUDE_REP)/ -I libft/$(INCLUDE_REP)
 

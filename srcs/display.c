@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 19:57:27 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/22 11:56:34 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/07/31 12:36:56 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,6 @@ int			pf_display(va_list args, char *str, int *ret)
 	}
 	if (flags.type == 'c' || flags.type == 's')
 		ft_bzero(flags.options + 1, sizeof(char) * 5);
-	*ret += pf_dispatch(flags, va_arg(args, void*));
+	*ret += pf_dispatch(flags, va_arg(args, double*));
 	return (i);
 }
