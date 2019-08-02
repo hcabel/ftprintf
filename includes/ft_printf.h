@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:23:19 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/02 00:52:02 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/08/02 13:10:34 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,7 @@ int				add_to_str(char* add, char **str_addr, int current, int end);
 int				fill(int size, char c, char **str_addr, int current);
 int				ft_ubaselen(unsigned long long nbr, int base);
 char			*ft_utoa_base(unsigned long long nbr, int base, char c);
+
+char	    	*ft_ftoa(double n, int precis);
 
 #endif

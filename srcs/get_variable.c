@@ -6,14 +6,14 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:45:37 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/02 01:03:33 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/08/02 13:11:39 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdlib.h>
 
-static char	*cast_to_str(t_flags flags, void *arg) // 26 line T-T (last error norm)
+static char	*cast_to_str(t_flags flags, void *arg) // 27 line T-T (last error norm)
 {
 	if (flags.type == 'd' || flags.type == 'i')
 		if (flags.scale[0] == 'l')
@@ -41,7 +41,10 @@ static char	*cast_to_str(t_flags flags, void *arg) // 26 line T-T (last error no
 		else
 			return (ft_utoa_base((unsigned int)arg, 10, 'a'));
 	else
-		return ("{Error}");
+		if (flags.scale[0] == 'l')
+			return (ft_ftoa(*(double*)arg, (flags.precis == -1 ? 6 : flags.precis)));
+		else
+			return (ft_ftoa(*(double*)arg, (flags.precis == -1 ? 6 : flags.precis)));
 }
 
 
