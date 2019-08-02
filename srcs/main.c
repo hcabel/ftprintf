@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/02 01:11:50 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/08/02 13:21:29 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1839,6 +1839,158 @@ int		main(int argc, char **argv)
 		ft_printf("--------------------%%f--------------------\n");
 		printf("01) Vrai PRINTF : |%f|\n", 1.1);
 		ft_printf("01) Mon PRINTF  : |%f|\n", 1.1);
+		printf("02) Vrai PRINTF : |%f|\n", 0);
+		ft_printf("02) Mon PRINTF  : |%f|\n", 0);
+		printf("03) Vrai PRINTF : |%.f|\n", 1.1);
+		ft_printf("03) Mon PRINTF  : |%.f|\n", 1.1);
+		printf("04) Vrai PRINTF : |%.f|\n", 0);
+		ft_printf("04) Mon PRINTF  : |%.f|\n", 0);
+		printf("05) Vrai PRINTF : |%.10f|\n", 1.1);
+		ft_printf("05) Mon PRINTF  : |%.10f|\n", 1.1);
+		printf("06) Vrai PRINTF : |%.10f|\n", 0);
+		ft_printf("06) Mon PRINTF  : |%.10f|\n", 0);
+		printf("07) Vrai PRINTF : |%10f|\n", 1.1);
+		ft_printf("07) Mon PRINTF  : |%10f|\n", 1.1);
+		printf("08) Vrai PRINTF : |%10f|\n", 0);
+		ft_printf("08) Mon PRINTF  : |%10f|\n", 0);
+		printf("09) Vrai PRINTF : |%10.10f|\n", 1.1);
+		ft_printf("09) Mon PRINTF  : |%10.10f|\n", 1.1);
+		printf("10) Vrai PRINTF : |%10.10f|\n", 0);
+		ft_printf("10) Mon PRINTF  : |%10.10f|\n", 0);
+		printf("11) Vrai PRINTF : |%5.10f|\n", 1.1);
+		ft_printf("11) Mon PRINTF  : |%5.10f|\n", 1.1);
+		printf("12) Vrai PRINTF : |%5.10f|\n", 0);
+		ft_printf("12) Mon PRINTF  : |%5.10f|\n", 0);
+
+		ft_printf("\n--------------------%%#f-------------------\n");
+		printf("01) Vrai PRINTF : |%#f|\n", 1.1);
+		ft_printf("01) Mon PRINTF  : |%#f|\n", 1.1);
+		printf("02) Vrai PRINTF : |%#f|\n", 0);
+		ft_printf("02) Mon PRINTF  : |%#f|\n", 0);
+		printf("03) Vrai PRINTF : |%#.f|\n", 1.1);
+		ft_printf("03) Mon PRINTF  : |%#.f|\n", 1.1);
+		printf("04) Vrai PRINTF : |%#.f|\n", 0);
+		ft_printf("04) Mon PRINTF  : |%#.f|\n", 0);
+		printf("05) Vrai PRINTF : |%#.10f|\n", 1.1);
+		ft_printf("05) Mon PRINTF  : |%#.10f|\n", 1.1);
+		printf("06) Vrai PRINTF : |%#.10f|\n", 0);
+		ft_printf("06) Mon PRINTF  : |%#.10f|\n", 0);
+		printf("07) Vrai PRINTF : |%#10f|\n", 1.1);
+		ft_printf("07) Mon PRINTF  : |%#10f|\n", 1.1);
+		printf("08) Vrai PRINTF : |%#10f|\n", 0);
+		ft_printf("08) Mon PRINTF  : |%#10f|\n", 0);
+		printf("09) Vrai PRINTF : |%#10.10f|\n", 1.1);
+		ft_printf("09) Mon PRINTF  : |%#10.10f|\n", 1.1);
+		printf("10) Vrai PRINTF : |%#10.10f|\n", 0);
+		ft_printf("10) Mon PRINTF  : |%#10.10f|\n", 0);
+		printf("11) Vrai PRINTF : |%#5.10f|\n", 1.1);
+		ft_printf("11) Mon PRINTF  : |%#5.10f|\n", 1.1);
+		printf("12) Vrai PRINTF : |%#5.10f|\n", 0);
+		ft_printf("12) Mon PRINTF  : |%#5.10f|\n", 0);
+
+		ft_printf("\n--------------------%% f-------------------\n");
+		printf("01) Vrai PRINTF : |% f|\n", 1.1);
+		ft_printf("01) Mon PRINTF  : |% f|\n", 1.1);
+		printf("02) Vrai PRINTF : |% f|\n", 0);
+		ft_printf("02) Mon PRINTF  : |% f|\n", 0);
+		printf("03) Vrai PRINTF : |% .f|\n", 1.1);
+		ft_printf("03) Mon PRINTF  : |% .f|\n", 1.1);
+		printf("04) Vrai PRINTF : |% .f|\n", 0);
+		ft_printf("04) Mon PRINTF  : |% .f|\n", 0);
+		printf("05) Vrai PRINTF : |% .10f|\n", 1.1);
+		ft_printf("05) Mon PRINTF  : |% .10f|\n", 1.1);
+		printf("06) Vrai PRINTF : |% .10f|\n", 0);
+		ft_printf("06) Mon PRINTF  : |% .10f|\n", 0);
+		printf("07) Vrai PRINTF : |% 10f|\n", 1.1);
+		ft_printf("07) Mon PRINTF  : |% 10f|\n", 1.1);
+		printf("08) Vrai PRINTF : |% 10f|\n", 0);
+		ft_printf("08) Mon PRINTF  : |% 10f|\n", 0);
+		printf("09) Vrai PRINTF : |% 10.10f|\n", 1.1);
+		ft_printf("09) Mon PRINTF  : |% 10.10f|\n", 1.1);
+		printf("10) Vrai PRINTF : |% 10.10f|\n", 0);
+		ft_printf("10) Mon PRINTF  : |% 10.10f|\n", 0);
+		printf("11) Vrai PRINTF : |% 5.10f|\n", 1.1);
+		ft_printf("11) Mon PRINTF  : |% 5.10f|\n", 1.1);
+		printf("12) Vrai PRINTF : |% 5.10f|\n", 0);
+		ft_printf("12) Mon PRINTF  : |% 5.10f|\n", 0);
+
+		ft_printf("\n--------------------%%-f-------------------\n");
+		printf("01) Vrai PRINTF : |%-f|\n", 1.1);
+		ft_printf("01) Mon PRINTF  : |%-f|\n", 1.1);
+		printf("02) Vrai PRINTF : |%-f|\n", 0);
+		ft_printf("02) Mon PRINTF  : |%-f|\n", 0);
+		printf("03) Vrai PRINTF : |%-.f|\n", 1.1);
+		ft_printf("03) Mon PRINTF  : |%-.f|\n", 1.1);
+		printf("04) Vrai PRINTF : |%-.f|\n", 0);
+		ft_printf("04) Mon PRINTF  : |%-.f|\n", 0);
+		printf("05) Vrai PRINTF : |%-.10f|\n", 1.1);
+		ft_printf("05) Mon PRINTF  : |%-.10f|\n", 1.1);
+		printf("06) Vrai PRINTF : |%-.10f|\n", 0);
+		ft_printf("06) Mon PRINTF  : |%-.10f|\n", 0);
+		printf("07) Vrai PRINTF : |%-10f|\n", 1.1);
+		ft_printf("07) Mon PRINTF  : |%-10f|\n", 1.1);
+		printf("08) Vrai PRINTF : |%-10f|\n", 0);
+		ft_printf("08) Mon PRINTF  : |%-10f|\n", 0);
+		printf("09) Vrai PRINTF : |%-10.10f|\n", 1.1);
+		ft_printf("09) Mon PRINTF  : |%-10.10f|\n", 1.1);
+		printf("10) Vrai PRINTF : |%-10.10f|\n", 0);
+		ft_printf("10) Mon PRINTF  : |%-10.10f|\n", 0);
+		printf("11) Vrai PRINTF : |%-5.10f|\n", 1.1);
+		ft_printf("11) Mon PRINTF  : |%-5.10f|\n", 1.1);
+		printf("12) Vrai PRINTF : |%-5.10f|\n", 0);
+		ft_printf("12) Mon PRINTF  : |%-5.10f|\n", 0);
+
+		ft_printf("\n--------------------%%+f-------------------\n");
+		printf("01) Vrai PRINTF : |%+f|\n", 1.1);
+		ft_printf("01) Mon PRINTF  : |%+f|\n", 1.1);
+		printf("02) Vrai PRINTF : |%+f|\n", 0);
+		ft_printf("02) Mon PRINTF  : |%+f|\n", 0);
+		printf("03) Vrai PRINTF : |%+.f|\n", 1.1);
+		ft_printf("03) Mon PRINTF  : |%+.f|\n", 1.1);
+		printf("04) Vrai PRINTF : |%+.f|\n", 0);
+		ft_printf("04) Mon PRINTF  : |%+.f|\n", 0);
+		printf("05) Vrai PRINTF : |%+.10f|\n", 1.1);
+		ft_printf("05) Mon PRINTF  : |%+.10f|\n", 1.1);
+		printf("06) Vrai PRINTF : |%+.10f|\n", 0);
+		ft_printf("06) Mon PRINTF  : |%+.10f|\n", 0);
+		printf("07) Vrai PRINTF : |%+10f|\n", 1.1);
+		ft_printf("07) Mon PRINTF  : |%+10f|\n", 1.1);
+		printf("08) Vrai PRINTF : |%+10f|\n", 0);
+		ft_printf("08) Mon PRINTF  : |%+10f|\n", 0);
+		printf("09) Vrai PRINTF : |%+10.10f|\n", 1.1);
+		ft_printf("09) Mon PRINTF  : |%+10.10f|\n", 1.1);
+		printf("10) Vrai PRINTF : |%+10.10f|\n", 0);
+		ft_printf("10) Mon PRINTF  : |%+10.10f|\n", 0);
+		printf("11) Vrai PRINTF : |%+5.10f|\n", 1.1);
+		ft_printf("11) Mon PRINTF  : |%+5.10f|\n", 1.1);
+		printf("12) Vrai PRINTF : |%+5.10f|\n", 0);
+		ft_printf("12) Mon PRINTF  : |%+5.10f|\n", 0);
+
+		ft_printf("\n--------------------%%0f-------------------\n");
+		printf("01) Vrai PRINTF : |%0f|\n", 1.1);
+		ft_printf("01) Mon PRINTF  : |%0f|\n", 1.1);
+		printf("02) Vrai PRINTF : |%0f|\n", 0);
+		ft_printf("02) Mon PRINTF  : |%0f|\n", 0);
+		printf("03) Vrai PRINTF : |%0.f|\n", 1.1);
+		ft_printf("03) Mon PRINTF  : |%0.f|\n", 1.1);
+		printf("04) Vrai PRINTF : |%0.f|\n", 0);
+		ft_printf("04) Mon PRINTF  : |%0.f|\n", 0);
+		printf("05) Vrai PRINTF : |%0.10f|\n", 1.1);
+		ft_printf("05) Mon PRINTF  : |%0.10f|\n", 1.1);
+		printf("06) Vrai PRINTF : |%0.10f|\n", 0);
+		ft_printf("06) Mon PRINTF  : |%0.10f|\n", 0);
+		printf("07) Vrai PRINTF : |%010f|\n", 1.1);
+		ft_printf("07) Mon PRINTF  : |%010f|\n", 1.1);
+		printf("08) Vrai PRINTF : |%010f|\n", 0);
+		ft_printf("08) Mon PRINTF  : |%010f|\n", 0);
+		printf("09) Vrai PRINTF : |%010.10f|\n", 1.1);
+		ft_printf("09) Mon PRINTF  : |%010.10f|\n", 1.1);
+		printf("10) Vrai PRINTF : |%010.10f|\n", 0);
+		ft_printf("10) Mon PRINTF  : |%010.10f|\n", 0);
+		printf("11) Vrai PRINTF : |%05.10f|\n", 1.1);
+		ft_printf("11) Mon PRINTF  : |%05.10f|\n", 1.1);
+		printf("12) Vrai PRINTF : |%05.10f|\n", 0);
+		ft_printf("12) Mon PRINTF  : |%05.10f|\n", 0);
 	}
 	else if (str[0] == 'r' && str[1] == 'e' && str[2] == 't')
 	{

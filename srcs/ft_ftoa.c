@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 03:50:49 by sylewis           #+#    #+#             */
-/*   Updated: 2019/07/25 18:49:58 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/08/02 13:10:06 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void    decimal_rounding(char **str_addr, int i)
     }
         if (str[i] == '-')
         {
-            str[1] = '1';                
+            str[1] = '1';
             str[0] = '-';
         }
         else if (i == 0)
@@ -110,6 +110,7 @@ static double      ft_dabs(double n)
 {
     return (n > 0.0 ? n : -n);
 }
+
 char	    *ft_ftoa(double n, int precis)
 {
     int     whole;

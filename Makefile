@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/08/02 00:51:48 by hcabel           ###   ########.fr        #
+#    Updated: 2019/08/02 13:09:42 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRCS			=	ft_printf.c			\
 					pf_modify_value.c	\
 					main.c				\
 					get_variable.c		\
+					ft_ftoa.c			\
 					utils.c
 
 
