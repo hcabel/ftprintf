@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:23:19 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/17 19:40:36 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/08/17 19:43:30 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int				fill(int size, char c, char **str_addr, int current);
 int				ft_ubaselen(unsigned long long nbr, int base);
 char			*ft_utoa_base(unsigned long long nbr, int base, char c);
 
-char	    	*ft_ftoa(double n, int precis);
+char			*ft_ftoa(double n, int precis);
 
 int     		colour_parse(char *str);
 
