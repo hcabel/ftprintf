@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:23:19 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/02 13:10:34 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/08/17 19:40:36 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@
 # define IS_SPACE flags.options[4]
 
 # define ADDTOSTR(x) add_to_str(x, &nv->new_str, i, nv->str_size)
+
+# define RED "\033[31m"
+# define GREEN "\033[32m"
+# define YELLOW "\033[33m"
+# define BLUE "\033[34m"
+# define MAGENTA "\033[35m" 
+# define CYAN "\033[36m"
+# define RESET "\033[0m"
 
 typedef struct	s_flags
 {
@@ -80,5 +88,7 @@ int				ft_ubaselen(unsigned long long nbr, int base);
 char			*ft_utoa_base(unsigned long long nbr, int base, char c);
 
 char	    	*ft_ftoa(double n, int precis);
+
+int     		colour_parse(char *str);
 
 #endif
