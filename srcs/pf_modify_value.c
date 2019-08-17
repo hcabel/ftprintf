@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:33:03 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/02 13:00:38 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/08/15 20:55:16 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,11 @@ static void	create_new_arg(char *str_arg, t_flags flags, t_newvalues *nv)
 	else if (flags.type == 'X' && IS_HASHTAG && str_arg[0] != '0')
 		i += ADDTOSTR("0X");
 	else if (IS_PLUS && !nv->is_negative)
-		i +=  ADDTOSTR("+");
+		i += ADDTOSTR("+");
 	else if (IS_SPACE && !IS_PLUS && !nv->is_negative)
 		i += ADDTOSTR(" ");
 	else if (nv->is_negative && flags.type != 'u')
-		i+= ADDTOSTR("-");
+		i += ADDTOSTR("-");
 	if (flags.type != 's' && flags.type != 'c')
 		i += fill(nv->zero_size, '0', &(nv->new_str), i);
 	i += add_to_str(str_arg, &(nv->new_str), i, nv->arg_size);
