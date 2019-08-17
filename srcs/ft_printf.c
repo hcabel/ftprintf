@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:23:03 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/15 20:52:13 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/08/17 11:36:20 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,13 @@ static int	pf_putstr(char *str, int i, int *ret)
 	int	j;
 
 	j = 0;
-	while (str[i + j] && str[i + j] != '%')
+	while (1)
 	{
-		j++;
+		if (!str[i + j] || str[i + j] == '%'
+			|| (str[i + j] == '{' && str[i + j - 1] != '%'))
+			break ;
+		else
+			j++;
 	}
 	write(1, str + i, j);
 	*ret += j;
@@ -40,7 +44,7 @@ int			ft_printf(const char *format, ...)
 	ret = 0;
 	while (str[i])
 	{
-		if (str[i] == '%')
+		if (str[i] == '%' || str[i] == '{')
 			i += pf_dispatch(args, str + i, &ret);
 		else
 			i += pf_putstr(str, i, &ret);

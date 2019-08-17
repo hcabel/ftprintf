@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 03:50:49 by sylewis           #+#    #+#             */
-/*   Updated: 2019/08/02 13:10:06 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/08/02 21:56:02 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static void        decimal(char **str_addr, double deci, int precis, int len)
 
     str = *str_addr;
     i = len;
-    str[i++] = '.';
+    if (precis > 1)
+        str[i++] = '.';
     while (precis > 1)
     {
         precis--;

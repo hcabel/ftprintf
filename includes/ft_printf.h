@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:23:19 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/15 20:56:47 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/08/17 11:40:31 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@
 # define IS_SPACE flags.options[4]
 
 # define ADDTOSTR(x) add_to_str(x, &nv->new_str, i, nv->str_size)
+
+# define RED "\033[31m"
+# define GREEN "\033[32m"
+# define YELLOW "\033[33m"
+# define BLUE "\033[34m"
+# define MAGENTA "\033[35m"
+# define CYAN "\033[36m"
+# define RESET "\033[0m"
 
 typedef struct	s_flags
 {
