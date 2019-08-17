@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/02 13:21:29 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/08/17 19:32:07 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ int		main(int argc, char **argv)
 	}
 	else if (argc == 1)
 	{
+		ft_printf("{y}hello, {r}this {/}is a {b}test\n");
+		ft_printf("{y}hello, %{r}this {/}is a {b}test\n");
+		ft_printf("%{y}hello, {r}this {/}is a {b}test\n");
+		ft_printf("{y}hello, {d}this {/}is a {b}test\n\n\n");
+		ft_printf("{r}s{y}y{g}l{b}v{c}i{m}a{/}\n\n");
+		ft_printf("03) Mon PRINTF  : |%+.f|\n", 1.1);
+		printf("04) Vrai PRINTF : |%+.f|\n", 0);
+		ft_printf("04) Mon PRINTF  : |%+.f|\n", 0);
+		printf("05) Vrai PRINTF : |%+.10f|\n\n\n", 1.1);
 		ft_printf("\n----------------%%%%----------------\n");
 		printf("01) Vrai PRINTF : |% %|\n");
 		ft_printf("01) Mon PRINTF  : |% %|\n");
