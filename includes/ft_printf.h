@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:23:19 by hcabel            #+#    #+#             */
-/*   Updated: 2019/09/05 11:48:43 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/09/05 12:27:26 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "libft.h"
 # include <stdarg.h>
-
 
 # define ZERO_SIZE (nv->zero_size > 0 ? nv->zero_size : 0)
 # define SPACE_SIZE (nv->space_size > 0 ? nv->space_size : 0)
@@ -32,7 +31,7 @@
 # define GREEN "\033[32m"
 # define YELLOW "\033[33m"
 # define BLUE "\033[34m"
-# define MAGENTA "\033[35m" 
+# define MAGENTA "\033[35m"
 # define CYAN "\033[36m"
 # define RESET "\033[0m"
 
@@ -84,7 +83,7 @@ char			*convert_to_char(void *arg, t_flags flags, t_newvalues *nv);
 /*
 **	utils.c
 */
-int				add_to_str(char* add, char **str_addr, int current, int end);
+int				add_to_str(char *add, char **str_addr, int current, int end);
 int				fill(int size, char c, char **str_addr, int current);
 int				ft_ubaselen(unsigned long long nbr, int base);
 char			*ft_utoa_base(unsigned long long nbr, int base, char c);

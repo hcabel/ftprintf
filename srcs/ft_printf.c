@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:23:03 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/17 11:36:20 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/09/05 12:25:55 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ static int	pf_putstr(char *str, int i, int *ret)
 	write(1, str + i, j);
 	*ret += j;
 	return (j);
+}
+
+int			add_hashtag(char *str_arg, t_flags flags, t_newvalues *nv, int i)
+{
+	if ((flags.type == 'x' && IS_HASHTAG && str_arg[0] != '0')
+		|| flags.type == 'p')
+		i += ADDTOSTR("0x");
+	else if (flags.type == 'o' && IS_HASHTAG && str_arg[0] != '0')
+		i += ADDTOSTR("0");
+	else if (flags.type == 'X' && IS_HASHTAG && str_arg[0] != '0')
+		i += ADDTOSTR("0X");
+	return (i);
 }
 
 int			ft_printf(const char *format, ...)

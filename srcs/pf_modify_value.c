@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_modify_value.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:33:03 by hcabel            #+#    #+#             */
-/*   Updated: 2019/09/05 12:04:16 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/09/05 12:26:00 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ static void	create_new_str(t_flags flags, t_newvalues *nv, char *str_arg)
 			nv->str_size += 1;
 		else if (flags.type == 'f')
 			nv->str_size += 1;
-		else if ((flags.type == 'x' || flags.type == 'X' || flags.type == 'p')
-			&&	str_arg[0] != '0')
+		else if ((flags.type == 'x' || flags.type == 'X' ||
+			flags.type == 'p') && str_arg[0] != '0')
 			nv->str_size += 2;
 	}
 	if (nv->is_negative || IS_PLUS)
@@ -76,18 +76,6 @@ static void	create_new_str(t_flags flags, t_newvalues *nv, char *str_arg)
 	if (!(nv->new_str = (char*)malloc(sizeof(char) * (nv->str_size))))
 		return ;
 	ft_bzero(nv->new_str, nv->str_size + 2);
-}
-
-int			add_hashtag(char *str_arg, t_flags flags, t_newvalues *nv, int i)
-{
-	if ((flags.type == 'x' && IS_HASHTAG && str_arg[0] != '0')
-		|| flags.type == 'p')
-		i += ADDTOSTR("0x");
-	else if (flags.type == 'o' && IS_HASHTAG && str_arg[0] != '0')
-		i += ADDTOSTR("0");
-	else if (flags.type == 'X' && IS_HASHTAG && str_arg[0] != '0')
-		i += ADDTOSTR("0X");
-	return (i);
 }
 
 static void	create_new_arg(char *str_arg, t_flags flags, t_newvalues *nv)

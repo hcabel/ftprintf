@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
-/*   Updated: 2019/09/05 12:04:45 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/09/05 12:21:10 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		main(int argc, char **argv)
 		ft_printf("{r}s{y}y{g}l{b}v{c}i{m}a{/}\n\n");
 		ft_printf("03) Mon PRINTF  : |%+.f|\n", 1.1);
 		printf("04) Vrai PRINTF : |%+.f|\n", 0);
-		ft_printf("04) Mon PRINTF  : |%+.f|\n", 0);
+		ft_printf("04) Mon PRINTF  : |%+.10f|\n", 1.1);
 		printf("05) Vrai PRINTF : |%+.10f|\n\n\n", 1.1);
 		ft_printf("\n----------------%%%%----------------\n");
 		printf("01) Vrai PRINTF : |% %|\n");
@@ -61,14 +61,17 @@ int		main(int argc, char **argv)
 		ft_printf("08) Mon PRINTF  : |%-10%|\n");
 		printf("09) Vrai PRINTF : |%%%%|\n");
 		ft_printf("09) Mon PRINTF  : |%%%%|\n");
-		printf("10) Vrai PRINTF : |% +---12.5% %%%0004% %+1%|\n");
-		ft_printf("10) Mon PRINTF  : |% +---12.5% %%%0004% %+1%|\n");
+
+		
+		printf("\n\n\n10) Vrai PRINTF : |% +---12.5% %%%0004% %+1%|\n");
+		ft_printf("10) Mon PRINTF  : |% +---12.5% %%%0004% %+1%|\n\n\n\n");
 
 		ft_printf("\n----------------Mixed test----------------\n");
 		printf("01) Vrai PRINTF |%-12i| et |%--2.4s| |%24s| !\n", 0, NULL, "coco");
 		ft_printf("01) Mon PRINTF  |%-12i| et |%--2.4s| |%24s| !\n", 0, NULL, "coco");
+		printf("\nprintf(02) Vrai PRINTF |%--.4u| et |%#O%#012O%1lc|\n, -12, 0, 0, 95);\n");
 		printf("02) Vrai PRINTF |%--.4u| et |%#O%#012O%1lc|\n", -12, 0, 0, 95);
-		ft_printf("02) Mon PRINTF  |%--.4u| et |%#O%#012O%1lc|\n", -12, 0, 0, 95);
+		ft_printf("02) Mon PRINTF  |%--.4u| et |%#O%#012O%1lc|\n\n\n\n", -12, 0, 0, 95);
 		printf("03) Vrai PRINTF |%-8p| |%---32p| |%#5.3x%#024X|\n", &str, &str, 0x25, 0);
 		ft_printf("03) Mon PRINTF  |%-8p| |%---32p| |%#5.3x%#024X|\n", &str, &str, 0x25, 0);
 		return (0);
