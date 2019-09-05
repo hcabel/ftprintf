@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:23:19 by hcabel            #+#    #+#             */
-/*   Updated: 2019/09/04 20:33:57 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/09/05 11:48:43 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "libft.h"
 # include <stdarg.h>
 
-# define FABS(x) ((double)(x > 0.0 ? x : -x))
 
 # define ZERO_SIZE (nv->zero_size > 0 ? nv->zero_size : 0)
 # define SPACE_SIZE (nv->space_size > 0 ? nv->space_size : 0)
@@ -26,6 +25,7 @@
 # define IS_0 flags.options[3]
 # define IS_SPACE flags.options[4]
 
+# define FABS(x) ((double)(x > 0.0 ? x : -x))
 # define ADDTOSTR(x) add_to_str(x, &nv->new_str, i, nv->str_size)
 
 # define RED "\033[31m"
