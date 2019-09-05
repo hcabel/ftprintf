@@ -6,7 +6,11 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/09/05 12:04:45 by hcabel           ###   ########.fr       */
+=======
+/*   Updated: 2019/09/04 20:52:57 by hcabel           ###   ########.fr       */
+>>>>>>> parent of 8eec0a3... Add Lf flags
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -2011,6 +2015,7 @@ int		main(int argc, char **argv)
 		ft_printf("--------------------%%Lf--------------------\n");
 		printf("01) Vrai PRINTF : |%Lf|, next |%q|\n", (long double)1454546.154354, 4);
 		ft_printf("01) Mon PRINTF  : |%Lf|, next |%q|\n", (long double)1454546.154354, 4);
+<<<<<<< HEAD
 		printf("01) Vrai PRINTF : |%lf|, next |%q|\n", (long long)1454546154354, 4);
 		ft_printf("01) Mon PRINTF  : |%lf|, next |%q|\n", (long long)1454546154354, 4);
 		printf("02) Vrai PRINTF : |%Lf|\n", (long double)0);
@@ -2035,6 +2040,32 @@ int		main(int argc, char **argv)
 		ft_printf("11) Mon PRINTF  : |%5.10Lf|\n", (long double)1.1);
 		printf("12) Vrai PRINTF : |%5.10Lf|\n", (long double)0);
 		ft_printf("12) Mon PRINTF  : |%5.10Lf|\n", (long double)0);
+=======
+		ft_printf("01) Mon PRINTF  : |%lu|, next |%q|\n", (unsigned long)1454546154354, 4);
+		return 0;
+		printf("02) Vrai PRINTF : |%lLf|\n", 0);
+		ft_printf("02) Mon PRINTF  : |%lLf|\n", 0);
+		printf("03) Vrai PRINTF : |%.Lf|\n", 1.1);
+		ft_printf("03) Mon PRINTF  : |%.Lf|\n", 1.1);
+		printf("04) Vrai PRINTF : |%.Lf|\n", 0);
+		ft_printf("04) Mon PRINTF  : |%.Lf|\n", 0);
+		printf("05) Vrai PRINTF : |%.10Lf|\n", 1.1);
+		ft_printf("05) Mon PRINTF  : |%.10Lf|\n", 1.1);
+		printf("06) Vrai PRINTF : |%.10Lf|\n", 0);
+		ft_printf("06) Mon PRINTF  : |%.10Lf|\n", 0);
+		printf("07) Vrai PRINTF : |%10Lf|\n", 1.1);
+		ft_printf("07) Mon PRINTF  : |%10Lf|\n", 1.1);
+		printf("08) Vrai PRINTF : |%10Lf|\n", 0);
+		ft_printf("08) Mon PRINTF  : |%10Lf|\n", 0);
+		printf("09) Vrai PRINTF : |%10.10Lf|\n", 1.1);
+		ft_printf("09) Mon PRINTF  : |%10.10Lf|\n", 1.1);
+		printf("10) Vrai PRINTF : |%10.10Lf|\n", 0);
+		ft_printf("10) Mon PRINTF  : |%10.10Lf|\n", 0);
+		printf("11) Vrai PRINTF : |%5.10Lf|\n", 1.1);
+		ft_printf("11) Mon PRINTF  : |%5.10Lf|\n", 1.1);
+		printf("12) Vrai PRINTF : |%5.10Lf|\n", 0);
+		ft_printf("12) Mon PRINTF  : |%5.10Lf|\n", 0);
+>>>>>>> parent of 8eec0a3... Add Lf flags
 
 		ft_printf("\n--------------------%%#Lf-------------------\n");
 		printf("01) Vrai PRINTF : |%#Lf|\n", (long double)1.1);
