@@ -6,14 +6,33 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:45:37 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/02 13:11:39 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/09/04 20:30:27 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdlib.h>
 
-static char	*cast_to_str(t_flags flags, void *arg) // 27 line T-T (last error norm)
+static char	*cast_to_str2(t_flags flags, void *arg)
+{
+	if (flags.type == 'u')
+		if (flags.scale[0] == 'l')
+			return (ft_utoa_base((unsigned long)arg, 10, 'a'));
+		else
+			return (ft_utoa_base((unsigned int)arg, 10, 'a'));
+	else if (flags.type == 'f')
+	{
+		if (flags.scale[0] == 'L')
+			return (ft_ftoa(*(long double*)arg,
+				(flags.precis == -1 ? 6 : flags.precis)));
+		else
+			return (ft_ftoa(*(double*)arg,
+				(flags.precis == -1 ? 6 : flags.precis)));
+	}
+	return (NULL);
+}
+
+static char	*cast_to_str(t_flags flags, void *arg)
 {
 	if (flags.type == 'd' || flags.type == 'i')
 		if (flags.scale[0] == 'l')
@@ -35,18 +54,9 @@ static char	*cast_to_str(t_flags flags, void *arg) // 27 line T-T (last error no
 			return (ft_utoa_base((unsigned long)arg, 16, 'A'));
 		else
 			return (ft_utoa_base((unsigned int)arg, 16, 'A'));
-	else if (flags.type == 'u')
-		if (flags.scale[0] == 'l')
-			return (ft_utoa_base((unsigned long)arg, 10, 'a'));
-		else
-			return (ft_utoa_base((unsigned int)arg, 10, 'a'));
 	else
-		if (flags.scale[0] == 'l')
-			return (ft_ftoa(*(double*)arg, (flags.precis == -1 ? 6 : flags.precis)));
-		else
-			return (ft_ftoa(*(double*)arg, (flags.precis == -1 ? 6 : flags.precis)));
+		return (cast_to_str2(flags, arg));
 }
-
 
 char		*convert_to_char(void *arg, t_flags flags, t_newvalues *nv)
 {

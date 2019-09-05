@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:23:19 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/17 19:43:30 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/09/04 20:33:57 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "libft.h"
 # include <stdarg.h>
+
+# define FABS(x) ((double)(x > 0.0 ? x : -x))
 
 # define ZERO_SIZE (nv->zero_size > 0 ? nv->zero_size : 0)
 # define SPACE_SIZE (nv->space_size > 0 ? nv->space_size : 0)
@@ -87,8 +89,14 @@ int				fill(int size, char c, char **str_addr, int current);
 int				ft_ubaselen(unsigned long long nbr, int base);
 char			*ft_utoa_base(unsigned long long nbr, int base, char c);
 
-char			*ft_ftoa(double n, int precis);
+/*
+**	ft_ftoa.c
+*/
+char			*ft_ftoa(long double n, int precis);
 
-int     		colour_parse(char *str);
+/*
+**	colour.c
+*/
+int				colour_parse(char *str);
 
 #endif

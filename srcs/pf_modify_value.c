@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:33:03 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/15 20:55:16 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/09/04 19:40:32 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static void add_flags(t_flags flags, t_newvalues *nv)
+static void	add_flags(t_flags flags, t_newvalues *nv)
 {
 	if ((IS_PLUS && !nv->is_negative) || (flags.type == 'o' && IS_HASHTAG))
 		nv->space_size--;
@@ -51,16 +51,15 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 			if (flags.length > nv->zero_size + nv->arg_size)
 				nv->space_size = flags.length - (nv->zero_size + nv->arg_size);
 	}
-	else
-		if (flags.length > nv->arg_size)
-			nv->space_size = flags.length - nv->arg_size;
+	else if (flags.length > nv->arg_size)
+		nv->space_size = flags.length - nv->arg_size;
 	add_flags(flags, nv);
 }
 
-static void	create_new_str(t_flags flags, t_newvalues *nv)
+static void	create_new_str(t_flags flags, t_newvalues *nv, char *str_arg)
 {
 	nv->str_size = ZERO_SIZE + SPACE_SIZE + nv->arg_size;
-	if (IS_HASHTAG)
+	if (IS_HASHTAG && str_arg[0] != '0')
 		nv->str_size += 2;
 	if (nv->is_negative || IS_PLUS)
 		nv->str_size++;
@@ -76,14 +75,14 @@ static void	create_new_arg(char *str_arg, t_flags flags, t_newvalues *nv)
 	int	i;
 
 	set_additional_size(flags, nv);
-	create_new_str(flags, nv);
+	create_new_str(flags, nv, str_arg);
 	i = 0;
 	if (!IS_MINUS)
 		i += fill(nv->space_size, ' ', &nv->new_str, i);
 	if ((flags.type == 'x' && IS_HASHTAG && str_arg[0] != '0')
 		|| flags.type == 'p')
 		i += ADDTOSTR("0x");
-	else if (flags.type == 'o' && IS_HASHTAG)
+	else if (flags.type == 'o' && IS_HASHTAG && str_arg[0] != '0')
 		i += ADDTOSTR("0");
 	else if (flags.type == 'X' && IS_HASHTAG && str_arg[0] != '0')
 		i += ADDTOSTR("0X");
@@ -115,7 +114,8 @@ int			pf_modify_value(void *arg, t_flags flags)
 		nv.arg_size += 2;
 	else if (flags.type == 'c' && old_arg_str[0] == '\0')
 		nv.arg_size = 1;
-	if (flags.precis == 0 && (int)arg == 0)
+	if (flags.precis == 0 && (int)arg == 0
+		&& (flags.type != 'o' || !IS_HASHTAG))
 		nv.arg_size = 0;
 	create_new_arg(old_arg_str, flags, &nv);
 	write(1, nv.new_str, nv.str_size);

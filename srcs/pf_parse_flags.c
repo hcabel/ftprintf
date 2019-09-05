@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:28:32 by hcabel            #+#    #+#             */
-/*   Updated: 2019/08/02 01:13:53 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/09/04 20:33:20 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ static int	check_scale(t_flags *flags, char *str)
 		}
 		return (1);
 	}
-	else if (str[0] == 'l')
+	else if (str[0] == 'l' || str[0] == 'L')
 	{
-		flags->scale[0] = 'l';
+		flags->scale[0] = str[0];
 		if (str[1] == 'l')
 		{
 			flags->scale[1] = 'l';
@@ -89,10 +89,9 @@ static int	check_scale(t_flags *flags, char *str)
 	return (0);
 }
 
-
 int			pf_parse_flags(t_flags *flags, char *str)
 {
-	int 	i;
+	int		i;
 
 	ft_bzero(flags->options, 5);
 	ft_bzero(flags->scale, 2);

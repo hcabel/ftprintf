@@ -6,15 +6,14 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 14:06:05 by hcabel            #+#    #+#             */
-/*   Updated: 2019/07/31 21:42:20 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/09/04 19:36:02 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_printf.h"
 #include <stdlib.h>
 
-int				add_to_str(char* add, char **str_addr, int current, int end)
+int				add_to_str(char *add, char **str_addr, int current, int end)
 {
 	int		i;
 	char	*str;
@@ -34,7 +33,7 @@ int				fill(int size, char c, char **str_addr, int current)
 	char	*str;
 	int		i;
 
-	str = * str_addr;
+	str = *str_addr;
 	i = 0;
 	while (i < size)
 	{
@@ -71,7 +70,6 @@ char			*ft_utoa_base(unsigned long long nbr, int base, char c)
 	if (!(result = (char*)malloc(sizeof(char) * size)))
 		return (NULL);
 	result[size] = '\0';
-	result[0] = (nbr < 0 && base <= 10 ? '-' : '\0');
 	i = size - 1;
 	if (nbr == 0)
 	{
