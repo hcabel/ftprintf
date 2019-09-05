@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:33:03 by hcabel            #+#    #+#             */
-/*   Updated: 2019/09/05 12:04:16 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/09/05 13:35:40 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	create_new_str(t_flags flags, t_newvalues *nv, char *str_arg)
 			nv->str_size += 1;
 		else if (flags.type == 'f')
 			nv->str_size += 1;
-		else if ((flags.type == 'x' || flags.type == 'X' || flags.type == 'p')
+		else if ((flags.type == 'x' || flags.type == 'X')
 			&&	str_arg[0] != '0')
 			nv->str_size += 2;
 	}
@@ -78,18 +78,6 @@ static void	create_new_str(t_flags flags, t_newvalues *nv, char *str_arg)
 	ft_bzero(nv->new_str, nv->str_size + 2);
 }
 
-int			add_hashtag(char *str_arg, t_flags flags, t_newvalues *nv, int i)
-{
-	if ((flags.type == 'x' && IS_HASHTAG && str_arg[0] != '0')
-		|| flags.type == 'p')
-		i += ADDTOSTR("0x");
-	else if (flags.type == 'o' && IS_HASHTAG && str_arg[0] != '0')
-		i += ADDTOSTR("0");
-	else if (flags.type == 'X' && IS_HASHTAG && str_arg[0] != '0')
-		i += ADDTOSTR("0X");
-	return (i);
-}
-
 static void	create_new_arg(char *str_arg, t_flags flags, t_newvalues *nv)
 {
 	int	i;
@@ -99,8 +87,8 @@ static void	create_new_arg(char *str_arg, t_flags flags, t_newvalues *nv)
 	i = 0;
 	if (!IS_MINUS)
 		i += fill(nv->space_size, ' ', &nv->new_str, i);
-	if (IS_HASHTAG)
-		i += add_hashtag(str_arg, flags, nv, i);
+	if (IS_HASHTAG || flags.type == 'p')
+		i = add_hashtag(str_arg, flags, nv, i);
 	else if (IS_PLUS && !nv->is_negative)
 		i += ADDTOSTR("+");
 	else if (IS_SPACE && !IS_PLUS && !nv->is_negative)
@@ -109,7 +97,7 @@ static void	create_new_arg(char *str_arg, t_flags flags, t_newvalues *nv)
 		i += ADDTOSTR("-");
 	if (flags.type != 's' && flags.type != 'c')
 		i += fill(nv->zero_size, '0', &(nv->new_str), i);
-	i += ADDTOSTR(str_arg);
+	i += add_to_str(str_arg, &(nv->new_str), i, nv->arg_size);
 	if (flags.type == 'f' && IS_HASHTAG && !ft_strchr(str_arg, '.'))
 		i += ADDTOSTR(".");
 	if (IS_MINUS)

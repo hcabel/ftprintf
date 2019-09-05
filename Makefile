@@ -6,11 +6,11 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/21 11:09:36 by hcabel            #+#    #+#              #
-#    Updated: 2019/09/04 20:24:06 by hcabel           ###   ########.fr        #
+#    Updated: 2019/09/05 13:41:58 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DEBUG			=	yes
+DEBUG			=	no
 DL				=	yes
 
 ifeq ($(DEBUG), yes)
@@ -35,7 +35,7 @@ ifeq (, $(wildcard libft/libft.a))
 	CHECK		=	make -C libft
 endif
 
-NAME			=	printf
+NAME			=	libftprintf.a
 
 OBJECT_REP		=	objects
 INCLUDE_REP		=	includes
@@ -47,12 +47,10 @@ SRCS			=	ft_printf.c			\
 					pf_dispatch.c		\
 					pf_parse_flags.c	\
 					pf_modify_value.c	\
-					main.c				\
 					colour.c			\
 					get_variable.c		\
 					ft_ftoa.c			\
 					utils.c
-
 
 INCLUDES		=	-I $(INCLUDE_REP)/ -I libft/$(INCLUDE_REP)
 
@@ -67,9 +65,8 @@ all: update $(NAME)
 
 $(NAME): mkdir make $(OBJECTS)
 	echo "\n\033[0;36mCreate [$@]\n\033[0;35m"
-	#ar rc libftprintf.a $(OBJECTS) libft/objects/ft_strlen.o libft/objects/ft_itoa_base.o \
-	#	libft/objects/ft_bzero.o libft/objects/ft_baselen.o
-	gcc $(FLAGS) -o $(NAME) $(OBJECTS) -L libft/ -lft
+	ar rc $(NAME) $(OBJECTS) libft/objects/ft_strlen.o libft/objects/ft_itoa_base.o \
+		libft/objects/ft_bzero.o libft/objects/ft_baselen.o
 
 mkdir:
 	mkdir -p $(OBJECT_REP)
