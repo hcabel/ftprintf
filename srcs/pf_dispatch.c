@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:25:27 by hcabel            #+#    #+#             */
-/*   Updated: 2019/09/04 21:08:16 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/09/05 11:11:52 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,26 @@
 static int	pf_display_flags(va_list args, char *str, int *ret)
 {
 	t_flags	flags;
-	int		i;
-	double	tmp;
-	void	*void_ptr;
+	int			i;
+	long double	tmp;
+	double		tmp2;
+	void		*void_ptr;
 
 	i = pf_parse_flags(&flags, str);
 	if (!(ft_strchr("%diouxXcspf", flags.type)))
 		return (i);
 	if (flags.type == 'f')
 	{
-		tmp = va_arg(args, long double);
-		void_ptr = &tmp;
+		if (flags.scale[0] == 'L')
+		{
+			tmp = va_arg(args, long double);
+			void_ptr = &tmp;
+		}
+		else
+		{
+			tmp2 = va_arg(args, double);
+			void_ptr = &tmp2;
+		}
 	}
 	else
 		void_ptr = (void*)va_arg(args, void*);

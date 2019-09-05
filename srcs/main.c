@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
-/*   Updated: 2019/09/04 20:52:57 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/09/05 11:12:48 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -2013,7 +2013,6 @@ int		main(int argc, char **argv)
 		
 		ft_printf("01) Mon PRINTF  : |%Lf|, next |%q|\n", (long double)1454546.154354, 4);
 		ft_printf("01) Mon PRINTF  : |%lu|, next |%q|\n", (unsigned long)1454546154354, 4);
-		return 0;
 		printf("02) Vrai PRINTF : |%lLf|\n", 0);
 		ft_printf("02) Mon PRINTF  : |%lLf|\n", 0);
 		printf("03) Vrai PRINTF : |%.Lf|\n", 1.1);
