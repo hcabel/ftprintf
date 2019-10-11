@@ -6,14 +6,14 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:23:19 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/06 17:02:49 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/08 15:55:46 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../libft/includes/libft.h"
+# include "libft.h"
 # include <stdarg.h>
 
 # define ZERO_SIZE (nv->zero_size > 0 ? nv->zero_size : 0)
@@ -25,7 +25,6 @@
 # define IS_SPACE flags.options[4]
 # define IS_NEGA nv->is_negative
 
-# define FABS(x) ((double)(x > 0.0 ? x : -x))
 # define ADDTOSTR(x) add_to_str(x, &nv->new_str, i, nv->str_size)
 
 # define RED "\033[31m"
@@ -100,5 +99,6 @@ char			*ft_ftoa(long double n, int precis);
 **	colour.c
 */
 int				colour_parse(char *str);
+int				count(long int n);
 
 #endif
