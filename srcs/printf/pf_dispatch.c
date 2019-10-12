@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:25:27 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 15:26:19 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/12 17:54:22 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ static int	pf_select_flags(va_list args, char *str, int *ret)
 		*ret += flags_d(void_ptr, flags);
 	else if (flags.type == 'o')
 		*ret += flags_o(void_ptr, flags);
+	else if (flags.type == 'x')
+		*ret += flags_x(void_ptr, flags);
+	else if (flags.type == 'X')
+		*ret += flags_x2(void_ptr, flags);
+	else if (flags.type == 'u')
+		*ret += flags_u(void_ptr, flags);
 	return (i);
 }
 

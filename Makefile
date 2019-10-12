@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/02 18:27:31 by hcabel            #+#    #+#              #
-#    Updated: 2019/10/12 15:25:57 by hcabel           ###   ########.fr        #
+#    Updated: 2019/10/12 17:54:05 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,7 +140,10 @@ LIST_PRINTF			=	colour.c			\
 						flags_s.c			\
 						flags_p.c			\
 						flags_d.c			\
-						flags_o.c
+						flags_o.c			\
+						flags_x.c			\
+						flags_x2.c			\
+						flags_u.c
 
 SOURCES				=	$(addprefix $(PATH_STR), $(LIST_STR))		\
 						$(addprefix $(PATH_LST), $(LIST_LST))		\
