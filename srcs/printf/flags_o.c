@@ -26,8 +26,14 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 	}
 	else if (flags.length > 1)
 		nv->space_size = flags.length - nv->arg_size;;
-	if (IS_HASHTAG )
-		nv->space_size--;
+	if (IS_HASHTAG)
+	{
+		nv->zero_size--;
+		if (flags.precis == -1)
+		{
+			nv->space_size--;
+		}
+	}
 	if (IS_0)
 	{
 		if (flags.precis != -1)
