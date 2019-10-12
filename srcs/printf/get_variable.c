@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_variable.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:45:37 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/11 16:46:44 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/12 15:28:55 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,26 @@ static char	*cast_to_str2(t_flags flags, void *arg)
 		else
 			return (ft_utoa_base((unsigned int)arg, 10, 'a'));
 	else if (flags.type == 'f')
-	{
 		if (flags.scale[0] == 'L')
 			return (ft_ftoa(*(long double*)arg,
 				(flags.precis == -1 ? 6 : flags.precis)));
 		else
 			return (ft_ftoa(*(double*)arg,
 				(flags.precis == -1 ? 6 : flags.precis)));
-	}
 	else if (flags.type == 'X')
+	{
 		if (flags.scale[0] == 'l')
 			return (ft_utoa_base((unsigned long)arg, 16, 'A'));
 		else
 			return (ft_utoa_base((unsigned int)arg, 16, 'A'));
+	}
 	return (NULL);
 }
 
 static char	*cast_to_str(t_flags flags, void *arg)
 {
 	if (flags.type == 'd' || flags.type == 'i')
-	{	
+	{
 		if (flags.scale[0] == 'l')
 			return (ft_itoa_base((long long)((long)arg), 10));
 		else if (flags.scale[1] == 'h')

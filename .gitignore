@@ -1,0 +1,7 @@
+.vscode
+a.out*
+*.dSYM
+*.csv
+object
+*.o
+libftprintf.a

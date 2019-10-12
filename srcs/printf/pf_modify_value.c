@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_modify_value.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:33:03 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/11 15:28:53 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/12 14:15:28 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static void	add_flags(t_flags flags, t_newvalues *nv)
 			nv->zero_size += nv->space_size + 1;
 		nv->space_size = (flags.precis != -1 ? nv->space_size : 0);
 		nv->zero_size -= 1;
+		if (flags.type == 'x' || flags.type == 'X')
+			nv->zero_size -= nv->arg_size;
 	}
 	if ((flags.type == 'x' || flags.type == 'X') && IS_HASHTAG)
 		nv->space_size -= 2;
@@ -38,7 +40,7 @@ static void	add_flags(t_flags flags, t_newvalues *nv)
 
 static void	set_additional_size(t_flags flags, t_newvalues *nv)
 {
-	if (!(flags.precis == -1 && flags.length != -1))
+	if (flags.length > nv->arg_size)
 	{
 		if (flags.precis > nv->arg_size && flags.type != 's')
 			nv->zero_size = flags.precis - nv->arg_size;
@@ -51,8 +53,6 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 			if (flags.length > nv->zero_size + nv->arg_size)
 				nv->space_size = flags.length - (nv->zero_size + nv->arg_size);
 	}
-	else if (flags.length > nv->arg_size)
-		nv->space_size = flags.length - nv->arg_size;
 	add_flags(flags, nv);
 }
 

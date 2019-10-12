@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:23:19 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/08 15:55:46 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/12 15:25:48 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,11 @@ char			*ft_ftoa(long double n, int precis);
 */
 int				colour_parse(char *str);
 int				count(long int n);
+
+int				flags_c(void *arg, t_flags flags);
+int				flags_s(void *arg, t_flags flags);
+int				flags_p(void *arg, t_flags flags);
+int				flags_d(void *arg, t_flags flags);
+int				flags_o(void *arg, t_flags flags);
 
 #endif

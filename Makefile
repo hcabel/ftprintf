@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+         #
+#    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/02 18:27:31 by hcabel            #+#    #+#              #
-#    Updated: 2019/10/11 14:38:42 by sylewis          ###   ########.fr        #
+#    Updated: 2019/10/12 15:25:57 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -134,7 +134,13 @@ LIST_PRINTF			=	colour.c			\
 						ft_ftoa.c			\
 						get_variable.c		\
 						pf_modify_value.c	\
-						utils.c
+						utils.c				\
+											\
+						flags_c.c			\
+						flags_s.c			\
+						flags_p.c			\
+						flags_d.c			\
+						flags_o.c
 
 SOURCES				=	$(addprefix $(PATH_STR), $(LIST_STR))		\
 						$(addprefix $(PATH_LST), $(LIST_LST))		\
@@ -210,7 +216,7 @@ $(PATH_OBJECT)%.o: $(PATH_OTHER)%.c
 	printf "\r$(_VIOLET)[$(_GRAS)%3.f%%$(_END)$(_VIOLET)] $(_CYAN)[> $(COLOR)$(_GRAS)%-17s%17s$(_END)$(_CYAN) <]\t" \
 	$(shell echo "100 / $(words $(SOURCES)) * $(PRC)" | bc -l) $(shell echo $@ | cut -d '/' -f2)  $(shell echo $< | cut -d '/' -f3)
 	gcc -o $@ $(FLAGS) $(INCLUDES) -c $<
-	
+
 $(PATH_OBJECT)%.o: $(PATH_PRINTF)%.c
 	$(eval PRC = $(shell echo "$(PRC) + 1" | bc -l))
 	printf "\r$(_VIOLET)[$(_GRAS)%3.f%%$(_END)$(_VIOLET)] $(_CYAN)[> $(COLOR)$(_GRAS)%-17s%17s$(_END)$(_CYAN) <]\t" \
