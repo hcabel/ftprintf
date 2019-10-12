@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 18:45:29 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/12 19:36:53 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 		nv->space_size = flags.length - nv->arg_size;
 	if (IS_HASHTAG)
 		nv->space_size -= 2;
-	if (IS_0)
+	if (IS_0 && !IS_MINUS)
 	{
 		if (flags.precis != -1)
 			while ((nv->zero_size += 1) + nv->arg_size < flags.precis)
@@ -40,10 +40,10 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 	}
 }
 
-static int	create_str(t_flags flags, t_newvalues *nv)
+static int	create_str(char *c, t_flags flags, t_newvalues *nv)
 {
 	nv->str_size = ZERO_SIZE + SPACE_SIZE + nv->arg_size;
-	if (IS_HASHTAG)
+	if (IS_HASHTAG && c[0] != '0')
 		nv->str_size += 2;
 	if (!(nv->new_str = (char*)malloc(sizeof(char) * nv->str_size)))
 		return (1);
@@ -82,10 +82,13 @@ int		flags_x2(void *arg, t_flags flags)
 		c = ft_utoa_base((unsigned long long)((unsigned int)arg), 16, 'A');
 	nv.zero_size = 0;
 	nv.space_size = 0;
-	nv.arg_size = ft_strlen(c);
+	if (c[0] == '0' && flags.precis == 0)
+		nv.arg_size = 0;
+	else
+		nv.arg_size = ft_strlen(c);
 	nv.is_negative = 0;
 	set_additional_size(flags, &nv);
-	if (create_str(flags, &nv))
+	if (create_str(c, flags, &nv))
 		return (-1);
 	fill_str(c, flags, &nv);
 	if (ft_strlen(nv.new_str) != 0)

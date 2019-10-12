@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 18:44:54 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/12 19:31:25 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,19 @@
 
 static void	set_additional_size(t_flags flags, t_newvalues *nv)
 {
-	if (!(flags.precis == -1 && flags.length != -1))
-	{
-		if (flags.precis > 1)
-			nv->zero_size = flags.precis - 1;
-		if (flags.length != -1)
-			if (flags.length > nv->zero_size + 1)
-				nv->space_size = flags.length - (nv->zero_size + 1);
-	}
-	else if (flags.length > 1)
-		nv->space_size = flags.length - 1;
+	nv->space_size = 0;
+	nv->zero_size = 0;
+	if (flags.length > 1)
+		nv->space_size = flags.length - nv->arg_size;
 	if (IS_0)
 	{
 		if (flags.precis != -1)
 			while ((nv->zero_size += 1) + nv->arg_size < flags.precis)
 				nv->space_size -= 1;
 		else
-			nv->zero_size += nv->space_size + 1;
+			nv->zero_size += nv->space_size + nv->arg_size;
 		nv->space_size = (flags.precis != -1 ? nv->space_size : 0);
-		nv->zero_size -= 1;
+		nv->zero_size -= nv->arg_size;
 	}
 }
 
@@ -69,12 +63,12 @@ int		flags_c(void *arg, t_flags flags)
 	nv.zero_size = 0;
 	nv.is_negative = 0;
 	nv.space_size = 0;
+	nv.arg_size = 1;
 	set_additional_size(flags, &nv);
 	if (create_str(&nv, c))
 		return (-1);
 	fill_str(c, flags, &nv);
-	if (ft_strlen(nv.new_str) != 0)
-		write(1, nv.new_str, nv.str_size);
+	write(1, nv.new_str, nv.str_size);
 	free(nv.new_str);
 	return (nv.str_size);
 }

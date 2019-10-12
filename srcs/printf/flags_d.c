@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 18:45:00 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/12 20:10:59 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 		nv->space_size--;
 	else if (IS_SPACE)
 		nv->space_size--;
-	if (IS_0)
+	if (IS_0 && !IS_MINUS)
 	{
 		if (flags.precis != -1)
 			while ((nv->zero_size += 1) + nv->arg_size < flags.precis)
@@ -94,7 +94,10 @@ int		flags_d(void *arg, t_flags flags)
 		c = ft_itoa_base((long long)((int)arg), 10);
 	nv.zero_size = 0;
 	nv.space_size = 0;
-	nv.arg_size = ft_strlen(c);
+	if (c[0] == '0' && flags.precis == 0)
+		nv.arg_size = 0;
+	else
+		nv.arg_size = ft_strlen(c);
 	nv.is_negative = (*c == '-' ? 1 : 0);
 	nv.arg_size -= (*c == '-' ? 1 : 0);
 	set_additional_size(flags, &nv);
