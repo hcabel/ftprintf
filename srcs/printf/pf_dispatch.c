@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:25:27 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 17:54:22 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/12 18:15:54 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	pf_select_flags(va_list args, char *str, int *ret)
 	if (flags.type == '\0' || !(ft_strchr("%diouxXcspf", flags.type)))
 		return (i - 1);
 	void_ptr = (void*)va_arg(args, void*);
+	if (flags.type == '%')
+		*ret += flags_c((void*)'%', flags);
 	if (flags.type == 'c')
 		*ret += flags_c(void_ptr, flags);
 	else if (flags.type == 's')

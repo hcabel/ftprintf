@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 18:09:06 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/12 18:45:29 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ int		flags_x2(void *arg, t_flags flags)
 	if (create_str(flags, &nv))
 		return (-1);
 	fill_str(c, flags, &nv);
-	write(1, nv.new_str, nv.str_size);
+	if (ft_strlen(nv.new_str) != 0)
+		write(1, nv.new_str, nv.str_size);
 	free(c);
 	free(nv.new_str);
 	return (nv.str_size);
