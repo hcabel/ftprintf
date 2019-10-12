@@ -118,6 +118,7 @@ char			*ft_ftoa(long double n, int precis)
 	precis++;
 	whole = (long int)n;
 	len = count(whole);
+
 	if (!(str = (char*)malloc(sizeof(*str) * (len + precis + 1))))
 		return (NULL);
 	str[len + precis] = '\0';

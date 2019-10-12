@@ -30,10 +30,27 @@ static int	pf_select_flags(va_list args, char *str, int *ret)
 	t_flags		flags;
 	int			i;
 	void		*void_ptr;
+	double		tmpf;
+	long double	tmplf;
 
 	i = pf_parse_flags(&flags, str);
 	if (flags.type == '\0' || !(ft_strchr("%diouxXcspf", flags.type)))
 		return (i - 1);
+	if (flags.type == 'f')
+	{
+		if (flags.scale[0] == 'L')
+		{
+			tmplf = (long double)va_arg(args, long double);
+			void_ptr = &tmplf;
+		}
+		else
+		{
+			tmpf = (double)va_arg(args, double);
+			void_ptr = &tmpf;
+		}
+		*ret += flags_f(void_ptr, flags);
+		return (i);
+	}
 	void_ptr = (void*)va_arg(args, void*);
 	if (flags.type == '%')
 		*ret += flags_c((void*)'%', flags);
@@ -53,6 +70,8 @@ static int	pf_select_flags(va_list args, char *str, int *ret)
 		*ret += flags_x2(void_ptr, flags);
 	else if (flags.type == 'u')
 		*ret += flags_u(void_ptr, flags);
+	
+		
 	return (i);
 }
 
