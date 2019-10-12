@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:28:32 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 16:30:21 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/12 16:36:12 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,8 @@ int			pf_parse_flags(t_flags *flags, char *str)
 	i += check_length(flags, str + i);
 	i += check_precis(flags, str + i);
 	i += check_scale(flags, str + i);
-	while (str[i]&& ft_isascii(str[i]) && !(ft_strchr("%diouxXcspf", str[i])))
+	while (str[i] && ft_isalpha(str[i]) && !(ft_strchr("%diouxXcspf", str[i])))
 		i++;
-	if (ft_isascii(str[i]))
-		flags->type = str[i++];
+	flags->type = str[i++];
 	return (i + 1);
 }

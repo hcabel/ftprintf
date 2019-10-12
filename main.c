@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/03 14:12:16 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 16:28:01 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/12 16:35:41 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int		main(int argc, char **argv)
 	}
 	else if (argc == 1)
 	{
-		ft_printf("|%jjjj|jjjjj|\n", 42);
 		   printf("|%jjjj|jjjjj|\n", 42);
+		ft_printf("|%jjjj|jjjjj|\n", 42);
 		return (0);
 		ft_printf("|% -12o|\n", 42);
 		printf("|% -12o|\n", 42);
