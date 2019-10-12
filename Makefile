@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/02 18:27:31 by hcabel            #+#    #+#              #
-#    Updated: 2019/10/12 17:54:05 by hcabel           ###   ########.fr        #
+#    Updated: 2019/10/12 18:08:20 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,8 +132,6 @@ LIST_PRINTF			=	colour.c			\
 						pf_dispatch.c		\
 						pf_parse_flags.c	\
 						ft_ftoa.c			\
-						get_variable.c		\
-						pf_modify_value.c	\
 						utils.c				\
 											\
 						flags_c.c			\

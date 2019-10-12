@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 15:20:58 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/12 18:06:16 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ int		flags_c(void *arg, t_flags flags)
 		return (-1);
 	fill_str(c, flags, &nv);
 	write(1, nv.new_str, nv.str_size);
+	free(nv.new_str);
 	return (nv.str_size);
 }
