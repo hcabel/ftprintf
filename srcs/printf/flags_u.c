@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 18:45:25 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/13 17:11:34 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int		flags_u(void *arg, t_flags flags)
 	nv.zero_size = 0;
 	nv.space_size = 0;
 	nv.arg_size = ft_strlen(c);
+	if ((unsigned int)arg == 0 && flags.precis == 0)
+		nv.arg_size = 0;
 	nv.is_negative = 0;
 	set_additional_size(flags, &nv);
 	if (create_str(flags, &nv))
