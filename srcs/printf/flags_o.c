@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 20:06:48 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/13 15:13:40 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 	}
 }
 
-static int	create_str(t_flags flags, t_newvalues *nv)
+static int	create_str(char *c, t_flags flags, t_newvalues *nv)
 {
 	nv->str_size = ZERO_SIZE + SPACE_SIZE + nv->arg_size;
-	if (IS_HASHTAG)
+	if (IS_HASHTAG && (c[0] != '0' || flags.precis == 0))
 		nv->str_size++;
 	if (!(nv->new_str = (char*)malloc(sizeof(char) * nv->str_size)))
 		return (1);
@@ -94,7 +94,7 @@ int		flags_o(void *arg, t_flags flags)
 		nv.arg_size = ft_strlen(c);
 	nv.is_negative = 0;
 	set_additional_size(flags, &nv);
-	if (create_str(flags, &nv))
+	if (create_str(c, flags, &nv))
 		return (-1);
 	fill_str(c, flags, &nv);
 	if (ft_strlen(nv.new_str) != 0)
