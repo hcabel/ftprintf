@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:28:32 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 12:33:14 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/13 17:11:57 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,7 @@ int			pf_parse_flags(t_flags *flags, char *str)
 		flags->type = str[i++];
 	else
 		return (1);
+	if (flags->type == 'f' && flags->precis == -1)
+		flags->precis = 6;
 	return (i + 1);
 }
