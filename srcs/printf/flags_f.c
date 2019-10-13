@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_f.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 18:45:00 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/13 12:01:12 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 	}
 }
 
-static int	create_str(t_flags flags, t_newvalues *nv)
+static int	create_str(char *c, t_flags flags, t_newvalues *nv)
 {
 	nv->str_size = ZERO_SIZE + SPACE_SIZE + nv->arg_size;
+	if (IS_HASHTAG && !ft_strchr(c, '.'))
+		nv->str_size += 1;
 	if (IS_NEGA)
 		nv->str_size++;
 	else if (IS_PLUS)
@@ -63,6 +65,7 @@ static int	fill_str(char *c, t_flags flags, t_newvalues *nv)
 	int	i;
 
 	i = 0;
+	
 	if (!IS_MINUS)
 		i += fill(nv->space_size, ' ', &nv->new_str, i);
 	if (IS_NEGA)
@@ -76,6 +79,8 @@ static int	fill_str(char *c, t_flags flags, t_newvalues *nv)
 		i += add_to_str(c + IS_NEGA, &(nv->new_str), i, nv->arg_size);
 	if (IS_MINUS)
 		i += fill(nv->space_size, ' ', &nv->new_str, i);
+	if (IS_HASHTAG && !ft_strchr(c, '.'))
+		i += ADDTOSTR(".");
 	return (0);
 }
 
@@ -94,7 +99,7 @@ int		flags_f(void *arg, t_flags flags)
 	nv.is_negative = (*c == '-' ? 1 : 0);
 	nv.arg_size -= (*c == '-' ? 1 : 0);
 	set_additional_size(flags, &nv);
-	if (create_str(flags, &nv))
+	if (create_str(c, flags, &nv))
 		return (-1);
 	fill_str(c, flags, &nv);
 	if (ft_strlen(nv.new_str) != 0)

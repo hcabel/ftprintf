@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 19:30:09 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/08 16:03:07 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/13 11:37:33 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 #include <stdlib.h>
 
 static char		*rounding_realloc(char *str, int sign)
@@ -58,7 +59,7 @@ static void		decimal_rounding(char **str_addr, int i)
 		str[i] += 1;
 }
 
-static void		decimal(char **str_addr, double deci, int precis, int len)
+static void		decimal(char **str_addr, long double deci, int precis, int len)
 {
 	int		i;
 	char	*str;
@@ -123,6 +124,6 @@ char			*ft_ftoa(long double n, int precis)
 		return (NULL);
 	str[len + precis] = '\0';
 	ft_itoa_float(&str, whole, len - 1);
-	decimal(&str, FABS(n - (long double)whole), precis, len);
+	decimal(&str, FABS((n - (long double)whole)), precis, len);
 	return (str);
 }
