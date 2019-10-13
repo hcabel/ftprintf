@@ -6,7 +6,7 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/02 18:27:31 by hcabel            #+#    #+#              #
-#    Updated: 2019/10/12 18:08:20 by hcabel           ###   ########.fr        #
+#    Updated: 2019/10/12 20:18:28 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,7 +133,6 @@ LIST_PRINTF			=	colour.c			\
 						pf_parse_flags.c	\
 						ft_ftoa.c			\
 						utils.c				\
-											\
 						flags_c.c			\
 						flags_s.c			\
 						flags_p.c			\
@@ -141,7 +140,8 @@ LIST_PRINTF			=	colour.c			\
 						flags_o.c			\
 						flags_x.c			\
 						flags_x2.c			\
-						flags_u.c
+						flags_u.c			\
+						flags_f.c
 
 SOURCES				=	$(addprefix $(PATH_STR), $(LIST_STR))		\
 						$(addprefix $(PATH_LST), $(LIST_LST))		\

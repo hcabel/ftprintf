@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:23:19 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 17:54:00 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/12 20:18:20 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ int				flags_o(void *arg, t_flags flags);
 int				flags_x(void *arg, t_flags flags);
 int				flags_x2(void *arg, t_flags flags);
 int				flags_u(void *arg, t_flags flags);
+int				flags_f(void *arg, t_flags flags);
 
 #endif

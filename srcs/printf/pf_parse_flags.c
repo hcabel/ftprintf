@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:28:32 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 16:36:12 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/12 21:13:19 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,12 @@ static int	check_precis(t_flags *flags, char *str)
 	int	i;
 
 	i = 0;
-	flags->precis = (str[i] == '.' ? 0 : -1);
-	i += (str[i] == '.' ? 1 : 0);
+	flags->precis = -1;
+	if (!str[i] || str[i] != '.')
+		return (0);
+	flags->precis = 0;
+	while (str[i] && str[i] == '.')
+		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		flags->precis = flags->precis * 10 + str[i] - '0';
@@ -92,6 +96,7 @@ static int	check_scale(t_flags *flags, char *str)
 int			pf_parse_flags(t_flags *flags, char *str)
 {
 	int		i;
+	int		tmp;
 
 	ft_bzero(flags->options, 5);
 	ft_bzero(flags->scale, 2);
@@ -100,8 +105,16 @@ int			pf_parse_flags(t_flags *flags, char *str)
 	i += check_length(flags, str + i);
 	i += check_precis(flags, str + i);
 	i += check_scale(flags, str + i);
-	while (str[i] && ft_isalpha(str[i]) && !(ft_strchr("%diouxXcspf", str[i])))
+	tmp = 0;
+	while (str[i] && ft_strchr("%diouxXcspf", str[i]))
+	{
+		if (ft_isprint(str[i]) && tmp == 0)
+			tmp = i;
 		i++;
-	flags->type = str[i++];
+	}
+	if (str[i])
+		flags->type = str[i++];
+	else
+		return (1);
 	return (i + 1);
 }
