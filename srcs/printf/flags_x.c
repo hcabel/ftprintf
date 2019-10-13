@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_x.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/12 19:09:41 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/13 18:10:31 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int	fill_str(char *c, t_flags flags, t_newvalues *nv)
 	return (0);
 }
 
-int		flags_x(void *arg, t_flags flags)
+int			flags_x(void *arg, t_flags flags)
 {
 	t_newvalues	nv;
 	char		*c;
@@ -82,10 +82,9 @@ int		flags_x(void *arg, t_flags flags)
 		c = ft_utoa_base((unsigned long long)((unsigned int)arg), 16, 'a');
 	nv.zero_size = 0;
 	nv.space_size = 0;
+	nv.arg_size = ft_strlen(c);
 	if (c[0] == '0' && flags.precis == 0)
 		nv.arg_size = 0;
-	else
-		nv.arg_size = ft_strlen(c);
 	nv.is_negative = 0;
 	set_additional_size(flags, &nv);
 	if (create_str(c, flags, &nv))
