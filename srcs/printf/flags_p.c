@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_p.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 15:18:14 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/13 15:45:04 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 	if (flags.precis != -1 || flags.length == -1)
 	{
 		if (flags.precis > nv->arg_size)
-			nv->zero_size = flags.precis - nv->arg_size;
+			nv->zero_size = flags.precis + 2 - nv->arg_size;
 		if (flags.length != -1)
 			if (flags.length > nv->zero_size + nv->arg_size)
 				nv->space_size = flags.length - (nv->zero_size + nv->arg_size);

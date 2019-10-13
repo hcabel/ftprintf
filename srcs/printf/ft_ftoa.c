@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 19:30:09 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 12:42:54 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/13 16:35:41 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,20 +87,15 @@ static void		decimal(char **str_addr, long double deci, int precis, int len)
 	}
 }
 
-static void		ft_itoa_float(char **str_addr, int n, int len)
+static void		ft_itoa_float(char **str_addr, int n, int len, int sign)
 {
-	int		sign;
 	char	*str;
 
 	str = *str_addr;
-	sign = 1;
 	if (n == 0)
-		str[0] = '0';
+		str[len--] = '0';
 	if (n < 0)
-	{
 		n = -n;
-		sign = -1;
-	}
 	while (n > 0)
 	{
 		str[len--] = n % 10 + 48;
@@ -115,15 +110,19 @@ char			*ft_ftoa(long double n, int precis)
 	long int	whole;
 	int			len;
 	char		*str;
+	int			sign;
 
+	sign = 1;
+	if (n < 0.0)
+		sign = -1;
 	precis++;
 	whole = (long int)n;
 	len = count(whole);
-
-	if (!(str = (char*)malloc(sizeof(*str) * (len + precis))))
+	if (whole == 0 && sign == -1)
+		len++;
+	if (!(str = (char*)ft_memalloc(sizeof(*str) * (len + precis))))
 		return (NULL);
-	str[len + precis - 1] = '\0';
-	ft_itoa_float(&str, whole, len - 1);
+	ft_itoa_float(&str, whole, len - 1, sign);
 	decimal(&str, FABS((n - (long double)whole)), precis, len);
 	return (str);
 }
