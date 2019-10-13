@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 17:11:34 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/13 18:00:52 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int	fill_str(char *c, t_flags flags, t_newvalues *nv)
 	return (0);
 }
 
-int		flags_u(void *arg, t_flags flags)
+int			flags_u(void *arg, t_flags flags)
 {
 	t_newvalues	nv;
 	char		*c;

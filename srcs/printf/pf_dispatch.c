@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_dispatch.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:25:27 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 15:05:27 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/13 18:20:58 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,28 @@ int			add_hashtag(char *str_arg, t_flags flags, t_newvalues *nv, int i)
 	else if (flags.type == 'X' && IS_HASHTAG && str_arg[0] != '0')
 		i += ADDTOSTR("0X");
 	return (i);
+}
+
+void		parse_func(t_flags flags, void *void_ptr, int *ret)
+{
+	if (flags.type == '%')
+		*ret += flags_c((void*)'%', flags);
+	if (flags.type == 'c')
+		*ret += flags_c(void_ptr, flags);
+	else if (flags.type == 's')
+		*ret += flags_s(void_ptr, flags);
+	else if (flags.type == 'p')
+		*ret += flags_p(void_ptr, flags);
+	else if (flags.type == 'd' || flags.type == 'i')
+		*ret += flags_d(void_ptr, flags);
+	else if (flags.type == 'o')
+		*ret += flags_o(void_ptr, flags);
+	else if (flags.type == 'x')
+		*ret += flags_x(void_ptr, flags);
+	else if (flags.type == 'X')
+		*ret += flags_x2(void_ptr, flags);
+	else if (flags.type == 'u')
+		*ret += flags_u(void_ptr, flags);
 }
 
 static int	pf_select_flags(va_list args, char *str, int *ret)
@@ -54,26 +76,7 @@ static int	pf_select_flags(va_list args, char *str, int *ret)
 	}
 	if (flags.type != '%')
 		void_ptr = (void*)va_arg(args, void*);
-	if (flags.type == '%')
-		*ret += flags_c((void*)'%', flags);
-	if (flags.type == 'c')
-		*ret += flags_c(void_ptr, flags);
-	else if (flags.type == 's')
-		*ret += flags_s(void_ptr, flags);
-	else if (flags.type == 'p')
-		*ret += flags_p(void_ptr, flags);
-	else if (flags.type == 'd' || flags.type == 'i')
-		*ret += flags_d(void_ptr, flags);
-	else if (flags.type == 'o')
-		*ret += flags_o(void_ptr, flags);
-	else if (flags.type == 'x')
-		*ret += flags_x(void_ptr, flags);
-	else if (flags.type == 'X')
-		*ret += flags_x2(void_ptr, flags);
-	else if (flags.type == 'u')
-		*ret += flags_u(void_ptr, flags);
-
-
+	parse_func(flags, void_ptr, ret);
 	return (i);
 }
 

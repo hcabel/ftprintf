@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 19:30:09 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 16:35:41 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/13 17:51:36 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ char			*ft_ftoa(long double n, int precis)
 	len = count(whole);
 	if (whole == 0 && sign == -1)
 		len++;
-	if (!(str = (char*)ft_memalloc(sizeof(*str) * (len + precis))))
+	if (!(str = (char*)ft_memalloc(sizeof(*str) * (len + precis + 1))))
 		return (NULL);
 	ft_itoa_float(&str, whole, len - 1, sign);
 	decimal(&str, FABS((n - (long double)whole)), precis, len);

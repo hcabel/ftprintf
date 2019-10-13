@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_o.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 15:13:40 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/13 18:08:40 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,11 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 	{
 		if (flags.precis > nv->arg_size)
 			nv->zero_size = flags.precis - nv->arg_size;
-		if (flags.length != -1)
-			if (flags.length > nv->zero_size + nv->arg_size)
-				nv->space_size = flags.length - (nv->zero_size + nv->arg_size);
+		if (flags.length != -1 && (flags.length > nv->zero_size + nv->arg_size))
+			nv->space_size = flags.length - (nv->zero_size + nv->arg_size);
 	}
 	else if (flags.length > 1)
-		nv->space_size = flags.length - nv->arg_size;;
+		nv->space_size = flags.length - nv->arg_size;
 	if (IS_HASHTAG)
 	{
 		nv->zero_size--;
@@ -73,7 +72,7 @@ static int	fill_str(char *c, t_flags flags, t_newvalues *nv)
 	return (0);
 }
 
-int		flags_o(void *arg, t_flags flags)
+int			flags_o(void *arg, t_flags flags)
 {
 	t_newvalues	nv;
 	char		*c;
@@ -88,10 +87,9 @@ int		flags_o(void *arg, t_flags flags)
 		c = ft_utoa_base((unsigned long long)((unsigned int)arg), 8, 'a');
 	nv.zero_size = 0;
 	nv.space_size = 0;
+	nv.arg_size = ft_strlen(c);
 	if (c[0] == '0' && flags.precis == 0)
 		nv.arg_size = 0;
-	else
-		nv.arg_size = ft_strlen(c);
 	nv.is_negative = 0;
 	set_additional_size(flags, &nv);
 	if (create_str(c, flags, &nv))

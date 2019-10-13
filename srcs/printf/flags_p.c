@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 15:45:04 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/13 18:01:55 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,10 @@ static int	fill_str(char *c, t_flags flags, t_newvalues *nv)
 	return (0);
 }
 
-int		flags_p(void *arg, t_flags flags)
+int			flags_p(void *arg, t_flags flags)
 {
 	t_newvalues	nv;
 	char		*c;
-
 
 	c = ft_utoa_base((unsigned long)arg, 16, 'a');
 	nv.zero_size = 0;
