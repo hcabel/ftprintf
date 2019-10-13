@@ -3,16 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   flags_d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 18:05:24 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/13 18:52:01 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdlib.h>
 #include <unistd.h>
+
+static void	is_0(t_flags flags, t_newvalues *nv)
+{
+	if (flags.precis != -1)
+		while ((nv->zero_size += 1) + nv->arg_size < flags.precis)
+			nv->space_size -= 1;
+	else
+		nv->zero_size += nv->space_size + 1;
+	nv->space_size = (flags.precis != -1 ? nv->space_size : 0);
+	nv->zero_size -= 1;
+}
 
 static void	set_additional_size(t_flags flags, t_newvalues *nv)
 {
@@ -32,19 +43,12 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 	else if (IS_SPACE)
 		nv->space_size--;
 	if (IS_0 && !IS_MINUS)
-	{
-		if (flags.precis != -1)
-			while ((nv->zero_size += 1) + nv->arg_size < flags.precis)
-				nv->space_size -= 1;
-		else
-			nv->zero_size += nv->space_size + 1;
-		nv->space_size = (flags.precis != -1 ? nv->space_size : 0);
-		nv->zero_size -= 1;
-	}
+		is_0(flags, nv);
 }
 
 static int	create_str(t_flags flags, t_newvalues *nv)
 {
+	set_additional_size(flags, nv);
 	nv->str_size = ZERO_SIZE + SPACE_SIZE + nv->arg_size;
 	if (IS_NEGA)
 		nv->str_size++;
@@ -94,11 +98,9 @@ int			flags_d(void *arg, t_flags flags)
 	nv.zero_size = 0;
 	nv.space_size = 0;
 	nv.arg_size = ft_strlen(c);
-	if (c[0] == '0' && flags.precis == 0)
-		nv.arg_size = 0;
+	nv.arg_size -= (c[0] == '0' && flags.precis == 0 ? nv.arg_size : 0);
 	nv.is_negative = (*c == '-' ? 1 : 0);
 	nv.arg_size -= (*c == '-' ? 1 : 0);
-	set_additional_size(flags, &nv);
 	if (create_str(flags, &nv))
 		return (-1);
 	fill_str(c, flags, &nv);

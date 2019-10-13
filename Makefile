@@ -6,11 +6,11 @@
 #    By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/02 18:27:31 by hcabel            #+#    #+#              #
-#    Updated: 2019/10/12 20:18:28 by hcabel           ###   ########.fr        #
+#    Updated: 2019/10/13 18:49:11 by hcabel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DEBUG				=	yes
+DEBUG				=	no
 
 ifeq ($(DEBUG), yes)
 	FLAGS			=	-g

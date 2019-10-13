@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_x2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 18:10:03 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/13 18:44:55 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 
 static int	create_str(char *c, t_flags flags, t_newvalues *nv)
 {
+	set_additional_size(flags, nv);
 	nv->str_size = ZERO_SIZE + SPACE_SIZE + nv->arg_size;
 	if (IS_HASHTAG && c[0] != '0')
 		nv->str_size += 2;
@@ -86,7 +87,6 @@ int			flags_x2(void *arg, t_flags flags)
 	if (c[0] == '0' && flags.precis == 0)
 		nv.arg_size = 0;
 	nv.is_negative = 0;
-	set_additional_size(flags, &nv);
 	if (create_str(c, flags, &nv))
 		return (-1);
 	fill_str(c, flags, &nv);

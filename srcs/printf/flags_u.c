@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 18:00:52 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/13 18:44:43 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 
 static int	create_str(t_flags flags, t_newvalues *nv)
 {
+	set_additional_size(flags, nv);
 	nv->str_size = ZERO_SIZE + SPACE_SIZE + nv->arg_size;
 	if (IS_HASHTAG)
 		nv->str_size += 2;
@@ -86,7 +87,6 @@ int			flags_u(void *arg, t_flags flags)
 	if ((unsigned int)arg == 0 && flags.precis == 0)
 		nv.arg_size = 0;
 	nv.is_negative = 0;
-	set_additional_size(flags, &nv);
 	if (create_str(flags, &nv))
 		return (-1);
 	fill_str(c, flags, &nv);

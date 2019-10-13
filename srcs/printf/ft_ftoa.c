@@ -6,11 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 19:30:09 by hcabel            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/10/13 17:52:25 by hcabel           ###   ########.fr       */
-=======
-/*   Updated: 2019/10/13 17:51:36 by sylewis          ###   ########.fr       */
->>>>>>> f30c25fe8dccb60ddea6f7bbc5c1776f74e77ec4
+/*   Updated: 2019/10/13 18:32:13 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +14,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-static char		*rounding_realloc(char *str, int sign)
+static char	*rounding_realloc(char *str, int sign)
 {
 	char	*new_str;
 	int		i;
@@ -43,7 +39,7 @@ static char		*rounding_realloc(char *str, int sign)
 	return (new_str);
 }
 
-static void		decimal_rounding(char **str_addr, int i)
+static void	decimal_rounding(char **str_addr, int i)
 {
 	char	*str;
 
@@ -63,7 +59,7 @@ static void		decimal_rounding(char **str_addr, int i)
 		str[i] += 1;
 }
 
-static void		decimal(char **str_addr, long double deci, int precis, int len)
+static void	decimal(char **str_addr, long double deci, int precis, int len)
 {
 	int		i;
 	char	*str;
@@ -91,7 +87,7 @@ static void		decimal(char **str_addr, long double deci, int precis, int len)
 	}
 }
 
-static void		ft_itoa_float(char **str_addr, int n, int len, int sign)
+static void	ft_itoa_float(char **str_addr, int n, int len, int sign)
 {
 	char	*str;
 
@@ -109,7 +105,7 @@ static void		ft_itoa_float(char **str_addr, int n, int len, int sign)
 		str[len--] = '-';
 }
 
-char			*ft_ftoa(long double n, int precis)
+char		*ft_ftoa(long double n, int precis)
 {
 	long int	whole;
 	int			len;

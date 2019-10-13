@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_c.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 17:56:59 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/13 18:51:31 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	set_additional_size(t_flags flags, t_newvalues *nv)
 	}
 }
 
-static int	create_str(t_newvalues *nv, char c)
+static int	create_str(t_newvalues *nv)
 {
 	nv->str_size = ZERO_SIZE + SPACE_SIZE + 1;
 	if (!(nv->new_str = (char*)malloc(sizeof(char) * nv->str_size)))
@@ -65,7 +65,7 @@ int			flags_c(void *arg, t_flags flags)
 	nv.space_size = 0;
 	nv.arg_size = 1;
 	set_additional_size(flags, &nv);
-	if (create_str(&nv, c))
+	if (create_str(&nv))
 		return (-1);
 	fill_str(c, flags, &nv);
 	write(1, nv.new_str, nv.str_size);

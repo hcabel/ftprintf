@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pf_dispatch.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 13:25:27 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 18:20:58 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/13 18:51:06 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,30 @@ void		parse_func(t_flags flags, void *void_ptr, int *ret)
 		*ret += flags_u(void_ptr, flags);
 }
 
+static void	f_selector(t_flags flags, va_list args, int *ret)
+{
+	double		tmpf;
+	long double	tmplf;
+	void		*void_ptr;
+
+	if (flags.scale[0] == 'L')
+	{
+		tmplf = (long double)va_arg(args, long double);
+		void_ptr = &tmplf;
+	}
+	else
+	{
+		tmpf = (double)va_arg(args, double);
+		void_ptr = &tmpf;
+	}
+	*ret += flags_f(void_ptr, flags);
+}
+
 static int	pf_select_flags(va_list args, char *str, int *ret)
 {
 	t_flags		flags;
 	int			i;
 	void		*void_ptr;
-	double		tmpf;
-	long double	tmplf;
 
 	if ((i = pf_parse_flags(&flags, str)) == 1)
 		return (1);
@@ -61,19 +78,10 @@ static int	pf_select_flags(va_list args, char *str, int *ret)
 		return (i - 1);
 	if (flags.type == 'f')
 	{
-		if (flags.scale[0] == 'L')
-		{
-			tmplf = (long double)va_arg(args, long double);
-			void_ptr = &tmplf;
-		}
-		else
-		{
-			tmpf = (double)va_arg(args, double);
-			void_ptr = &tmpf;
-		}
-		*ret += flags_f(void_ptr, flags);
+		f_selector(flags, args, ret);
 		return (i);
 	}
+	void_ptr = NULL;
 	if (flags.type != '%')
 		void_ptr = (void*)va_arg(args, void*);
 	parse_func(flags, void_ptr, ret);

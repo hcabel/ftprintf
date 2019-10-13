@@ -6,7 +6,7 @@
 /*   By: hcabel <hcabel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 18:20:07 by hcabel           ###   ########.fr       */
+/*   Updated: 2019/10/13 18:33:25 by hcabel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static int	fill_str(char *c, t_flags flags, t_newvalues *nv)
 	int	i;
 
 	i = 0;
-
 	if (!IS_MINUS)
 		i += fill(nv->space_size, ' ', &nv->new_str, i);
 	if (IS_NEGA)
@@ -81,7 +80,7 @@ static int	fill_str(char *c, t_flags flags, t_newvalues *nv)
 	return (0);
 }
 
-int		flags_f(void *arg, t_flags flags)
+int			flags_f(void *arg, t_flags flags)
 {
 	t_newvalues	nv;
 	char		*c;
