@@ -6,7 +6,7 @@
 /*   By: sylewis <sylewis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 12:11:50 by hcabel            #+#    #+#             */
-/*   Updated: 2019/10/13 14:04:00 by sylewis          ###   ########.fr       */
+/*   Updated: 2019/10/13 16:46:16 by sylewis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ int		flags_f(void *arg, t_flags flags)
 	nv.arg_size = ft_strlen(c);
 	nv.is_negative = (*c == '-' ? 1 : 0);
 	nv.arg_size -= (*c == '-' ? 1 : 0);
+	if (*(double*)arg != 0 && flags.precis == 0)
+		flags.precis++;
 	set_additional_size(flags, &nv);
 	if (create_str(c, flags, &nv))
 		return (-1);
